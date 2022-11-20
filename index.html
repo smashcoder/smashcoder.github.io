@@ -13,10 +13,13 @@
       }
     </script>
     <style>
+      /*DeskTop View */
       @media only screen and (min-width: 1002px) {
+        html {
+          scroll-behavior: smooth;
+        }
         body{
-          overflow:hidden;
-          background:url(https://i.pinimg.com/originals/99/8e/05/998e055aba57c24138220937cc5166ab.gif) center no-repeat;
+          overflow:auto;
         }
         ul{
           list-style-type:none;
@@ -65,10 +68,53 @@
           font-family: 'Major Mono Display', monospace;
           font-weight:bold;
         }
+        #SEC{
+          display:flex;
+          flex-direction:column;
+        }
+        .DIVSTL{
+          background-image:url(SEC1.gif);
+          background-position:center;
+          height:100%;
+          width:100%;
+          margin:0;
+          padding:0;
+          position:absolute;
+          top:5%;
+          left:0;
+          right:0;
+        }
+        .DIVSTL1{
+          background-image:url(SEC2.gif);
+          background-position:center;
+          height:100%;
+          width:100%;
+          margin:0;
+          padding:0;
+          position:absolute;
+          top:105%;
+          left:0;
+          right:0;
+        }
+        .DIVSTL2{
+          background-image:url(SEC3.gif);
+          background-position:center;
+          height:100%;
+          width:100%;
+          margin:0;
+          padding:0;
+          position:absolute;
+          top:205%;
+          left:0;
+          right:0;
+        }
       }
       @media only screen and (max-width: 1001px) {
+        html {
+          scroll-behavior: smooth;
+        }
         body{
-          overflow:hidden;
+          overflow:auto;
           background:url(https://64.media.tumblr.com/0af9f7b0ddbd296a3ae89304435ca92c/1bd2ec08ee485d24-b1/s640x960/e091277a3db4f8f1ce0bc50a6370ac0b8f8edba0.gif) center no-repeat;
         }
         ul{
@@ -132,6 +178,35 @@
           top:auto;
           left:0;
         }
+        #SEC{
+          display:flex;
+          flex-direction:column;
+        }
+        .DIVSTL{
+          background-image:url(https://media.zicxa.com/2641099);
+          background-repeat:no-repeat;
+          height:100%;
+          margin:0;
+          padding:0;
+          background-size: cover;
+          /*width:100%;*/
+        }
+        .DIVSTL1{
+          background-image:url(https://data.whicdn.com/images/349470257/original.gif);
+          background-repeat:no-repeat;
+          height:100%;
+          margin:0;
+          padding:0;
+          /*width:100%;*/
+        }
+        .DIVSTL2{
+          background-image:url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7a5a3db7-fb07-4532-aa4c-93f5a5d5d651/ddjuqy1-725e43ec-9e57-4a7b-9fd3-29ea3fd3a95a.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzdhNWEzZGI3LWZiMDctNDUzMi1hYTRjLTkzZjVhNWQ1ZDY1MVwvZGRqdXF5MS03MjVlNDNlYy05ZTU3LTRhN2ItOWZkMy0yOWVhM2ZkM2E5NWEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.k505INgJ1pcO0nLFQUfQtPddzNcd-LmKm89Jr3qNSb4);
+          background-position:center;
+          height:100%;
+          margin:0;
+          padding:0;
+          width:100%;
+        }
       }
     </style>
   </head>
@@ -151,12 +226,11 @@
       <a href="#">Contact</a>
     </div>
     <span class="SP_STYLE1" onclick="openNav()">&#9776;SmashCoder</span>
-    <!--<img src="https://i.pinimg.com/originals/99/8e/05/998e055aba57c24138220937cc5166ab.gif" class="IMG_STYLE">
-    <img src="https://data.whicdn.com/images/313480414/original.gif" class="IMG_STYLE1">
-    <div class="DIV_STYLE">
-      <h2>
-        hElLO uSER!<br>Welcome Come To My PortFolio<br>
-      </h2>
-    </div>-->
+    <div class="DIVSTL" id="SEC">
+    </div>
+    <div class="DIVSTL1" id="SEC">
+    </div>
+    <div class="DIVSTL2" id="SEC">
+    </div>
   </body>
 </html>
