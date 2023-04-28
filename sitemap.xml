@@ -4,7 +4,13 @@
         <loc>/aboutme.html</loc>
     </url>
     <url>
+        <loc>/contactus.html</loc>
+    </url>
+    <url>
         <loc>/</loc>
+    </url>
+    <url>
+        <loc>/projects.html</loc>
     </url>
     <url>
         <loc>/skillset.html</loc>
