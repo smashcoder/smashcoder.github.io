@@ -16,18 +16,15 @@
         <loc>/BackUp/skillset.html</loc>
     </url>
     <url>
-        <loc>/about-me.html</loc>
+        <loc>/Porfolio/about-me.html</loc>
     </url>
     <url>
-        <loc>/</loc>
+        <loc>/Porfolio/</loc>
     </url>
     <url>
-        <loc>/index-temp.html</loc>
+        <loc>/Porfolio/myprojects.html</loc>
     </url>
     <url>
-        <loc>/myprojects.html</loc>
-    </url>
-    <url>
-        <loc>/myskills.html</loc>
+        <loc>/Porfolio/myskills.html</loc>
     </url>
 </urlset>
