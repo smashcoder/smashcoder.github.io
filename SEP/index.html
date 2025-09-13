@@ -263,6 +263,13 @@
                 border-color: #D4AF37;
             }
         }
+
+        /* Hide nav dot tooltips on mobile */
+        @media (max-width: 768px) {
+            .nav-dot span {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -581,12 +588,7 @@
         sections.forEach(section => {
             sectionObserver.observe(section);
         });
-
-        if (window.location.pathname.match(/^\/[A-Z]{3}\/index\.html$/)) {
-            history.replaceState(null, '', '/index.html');
-        }
     </script>
-
 </body>
-
+<script src="assets/js/rvp-script.js"></script>
 </html>
