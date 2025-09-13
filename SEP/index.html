@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pritish Rajpurohit | Full Stack Developer & AI/ML Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Onam Theme Styles & Full Page Scroll */
+        html {
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            background-color: #FFFBF0; /* Warm off-white, like jasmine */
+            font-family: 'Lato', sans-serif;
+            color: #4A4A4A;
+        }
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+        .text-onam-gold { color: #D4AF37; }
+        .bg-onam-gold { background-color: #D4AF37; }
+        .border-onam-gold { border-color: #D4AF37; }
+        .bg-onam-green { background-color: #2E8B57; } /* Lush green of banana leaves */
+        .text-onam-marigold { color: #FFC72C; }
+        .bg-onam-marigold { background-color: #FFC72C; }
+
+        /* Pookalam Background Hero */
+        .hero-bg {
+            background-color: #FFFBF0;
+            background-image:
+                radial-gradient(circle at center, rgba(255, 199, 44, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at center, rgba(46, 139, 87, 0.05) 30%, transparent 70%);
+            background-size: 100% 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 1.5rem 1.5rem;
+            animation: pan 90s linear infinite;
+        }
+        
+        @keyframes pan {
+          0% { transform: translateX(0) translateY(0); }
+          100% { transform: translateX(-25%) translateY(-25%); }
+        }
+
+        /* Kasavu Cloth Texture for About Section */
+        .kasavu-bg {
+             background-color: #FDFDFD;
+             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Section transition & Full Page Scroll Behavior */
+        section {
+            scroll-snap-align: start;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s ease-in-out;
+            padding: 2rem 0; /* Add vertical padding for spacing */
+        }
+        
+        /* Project card sadya style */
+        .sadya-card {
+            background: linear-gradient(135deg, #F0FFF0 0%, #E6F5E6 100%); /* Light green gradient */
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #D4AF37;
+        }
+        .sadya-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(46, 139, 87, 0.1), 0 10px 10px -5px rgba(46, 139, 87, 0.04);
+        }
+
+        /* Skills Pookalam animation */
+        .pookalam-skill {
+            transition: all 0.3s ease-in-out;
+            border-bottom: 4px solid transparent;
+            display: flex;
+            flex-direction: column;
+        }
+        .pookalam-skill:hover {
+            transform: translateY(-8px) scale(1.05);
+            filter: drop-shadow(0 0 15px rgba(255, 199, 44, 0.6));
+            border-bottom-color: #D4AF37;
+        }
+
+        /* Side Navigation */
+        .nav-dot.active {
+            background-color: #D4AF37; /* onam-gold */
+            transform: scale(1.75);
+        }
+
+        /* Experience Timeline */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 1rem;
+            left: -0.875rem; /* Adjust based on icon size and line position */
+            width: 1.75rem;
+            height: 1.75rem;
+            border-radius: 50%;
+            background-color: #FFFBF0;
+            border: 3px solid #D4AF37;
+            z-index: 1;
+            transition: background-color 0.3s;
+        }
+         .timeline-item:hover::before {
+             background-color: #D4AF37;
+         }
+         
+        /* Current Job Highlight */
+        .current-job {
+            background: white;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            padding-right: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+            position: relative;
+        }
+
+        .current-job::before {
+            background-color: #D4AF37;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        /* Certificate tiles */
+        .cert-tile {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .cert-tile:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .cta-button {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Typing animation */
+        .typing-effect {
+            display: inline-block;
+            border-right: .15em solid #D4AF37; /* The cursor */
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 2.5s steps(17, end), blink-caret .75s step-end infinite;
+            max-width: 100%;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #D4AF37; }
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Side Navigation -->
+    <nav id="side-nav" class="fixed top-1/2 right-4 md:right-8 -translate-y-1/2 z-50">
+        <ul class="space-y-4">
+            <li><a href="#hero" data-section="hero" class="nav-dot group relative block w-3 h-3 bg-gray-400 rounded-full transition-all duration-300 hover:scale-150"><span class="absolute right-full top-1/2 -translate-y-1/2 mr-4 px-2 py-1 bg-gray-800 text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Home</span></a></li>
+            <li><a href="#about" data-section="about" class="nav-dot group relative block w-3 h-3 bg-gray-400 rounded-full transition-all duration-300 hover:scale-150"><span class="absolute right-full top-1/2 -translate-y-1/2 mr-4 px-2 py-1 bg-gray-800 text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">About</span></a></li>
+            <li><a href="#skills" data-section="skills" class="nav-dot group relative block w-3 h-3 bg-gray-400 rounded-full transition-all duration-300 hover:scale-150"><span class="absolute right-full top-1/2 -translate-y-1/2 mr-4 px-2 py-1 bg-gray-800 text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Skills</span></a></li>
+            <li><a href="#experience" data-section="experience" class="nav-dot group relative block w-3 h-3 bg-gray-400 rounded-full transition-all duration-300 hover:scale-150"><span class="absolute right-full top-1/2 -translate-y-1/2 mr-4 px-2 py-1 bg-gray-800 text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Experience</span></a></li>
+            <li><a href="#certifications" data-section="certifications" class="nav-dot group relative block w-3 h-3 bg-gray-400 rounded-full transition-all duration-300 hover:scale-150"><span class="absolute right-full top-1/2 -translate-y-1/2 mr-4 px-2 py-1 bg-gray-800 text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Certifications</span></a></li>
+            <li><a href="#contact" data-section="contact" class="nav-dot group relative block w-3 h-3 bg-gray-400 rounded-full transition-all duration-300 hover:scale-150"><span class="absolute right-full top-1/2 -translate-y-1/2 mr-4 px-2 py-1 bg-gray-800 text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Contact</span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-bg text-center">
+        <div class="relative z-10 w-full px-4">
+            <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-gray-800 leading-tight reveal"><span class="typing-effect">Pritish Rajpurohit</span></h1>
+            <h2 class="text-2xl md:text-3xl text-onam-gold mt-4 font-semibold reveal" style="transition-delay: 100ms;">Full Stack Developer | AI/ML Engineer 🚀</h2>
+            <p class="max-w-3xl mx-auto mt-6 text-lg text-gray-600 reveal" style="transition-delay: 200ms;">
+                An AI/ML Engineer with 2+ years of experience, skilled in crafting robust digital solutions from Android apps to intelligent cloud systems. Certified in Google Business Intelligence and passionate about building elegant, full-stack experiences.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4 reveal" style="transition-delay: 300ms;">
+                <a href="#experience" class="w-full sm:w-auto bg-onam-gold text-white font-bold py-3 px-8 rounded-full text-lg hover:scale-105 transform transition shadow-lg cta-button">View My Experience</a>
+                <a href="#contact" class="w-full sm:w-auto border-2 border-onam-gold text-onam-gold font-bold py-3 px-8 rounded-full text-lg hover:bg-onam-gold hover:text-white transform transition cta-button" style="animation-delay: 0.2s;">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="kasavu-bg border-t-4 border-b-4 border-onam-gold border-opacity-30">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800">My Professional Journey 🗺️</h2>
+                <p class="mt-4 text-lg text-gray-600">Driven by a passion for continuous learning and application.</p>
+            </div>
+            <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-10 text-center">
+                <div class="bg-white/50 p-6 rounded-xl shadow-sm reveal">
+                    <h3 class="text-2xl font-bold text-onam-gold">🧠 Foundation in Engineering</h3>
+                    <p class="mt-2 text-gray-600">My B.E. in Information Technology provides a strong analytical and problem-solving foundation for everything I build.</p>
+                </div>
+                <div class="bg-white/50 p-6 rounded-xl shadow-sm reveal" style="transition-delay: 100ms;">
+                    <h3 class="text-2xl font-bold text-onam-gold">💼 Industry Experience</h3>
+                    <p class="mt-2 text-gray-600">Contributed to live projects at Tata Motors and developed a full web app at Imaginext Tech, honing skills in database optimization and UI/UX.</p>
+                </div>
+                <div class="bg-white/50 p-6 rounded-xl shadow-sm reveal" style="transition-delay: 200ms;">
+                    <h3 class="text-2xl font-bold text-onam-gold">📜 Certified Expertise</h3>
+                    <p class="mt-2 text-gray-600">As a certified Google Business Intelligence professional, I actively apply data-driven insights to create impactful solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800">A Pookalam of Skills 🌼</h2>
+                <p class="mt-4 text-lg text-gray-600">Each petal represents a skill, meticulously placed to create a vibrant whole.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <div class="pookalam-skill text-center p-6 bg-white rounded-2xl shadow-lg border-t-4 border-onam-marigold reveal">
+                    <h3 class="text-xl lg:text-2xl font-bold text-gray-800 mb-4">🤖 AI/ML</h3>
+                    <div class="flex-grow flex flex-col justify-center">
+                        <p class="text-gray-600 text-sm lg:text-base">Generative AI</p>
+                        <p class="text-gray-600 text-sm lg:text-base">Image Classification</p>
+                        <p class="text-gray-600 text-sm lg:text-base">Python</p>
+                    </div>
+                </div>
+                <div class="pookalam-skill text-center p-6 bg-white rounded-2xl shadow-lg border-t-4 border-onam-gold reveal" style="transition-delay: 100ms;">
+                    <h3 class="text-xl lg:text-2xl font-bold text-gray-800 mb-4">☁️ Cloud Computing</h3>
+                    <div class="flex-grow flex flex-col justify-center">
+                        <p class="text-gray-600 text-sm lg:text-base">AWS & GCP</p>
+                        <p class="text-gray-600 text-sm lg:text-base">Load Balancing</p>
+                        <p class="text-gray-600 text-sm lg:text-base">Serverless</p>
+                    </div>
+                </div>
+                <div class="pookalam-skill text-center p-6 bg-white rounded-2xl shadow-lg border-t-4 border-onam-green reveal" style="transition-delay: 200ms;">
+                    <h3 class="text-xl lg:text-2xl font-bold text-gray-800 mb-4">📱 App Development</h3>
+                    <div class="flex-grow flex flex-col justify-center">
+                        <p class="text-gray-600 text-sm lg:text-base">Android, Angular, Flutter</p>
+                        <p class="text-gray-600 text-sm lg:text-base">Laravel, Django, Flask</p>
+                    </div>
+                </div>
+                 <div class="pookalam-skill text-center p-6 bg-white rounded-2xl shadow-lg border-t-4 border-rose-400 reveal" style="transition-delay: 300ms;">
+                    <h3 class="text-xl lg:text-2xl font-bold text-gray-800 mb-4">📊 Data & BI</h3>
+                     <div class="flex-grow flex flex-col justify-center">
+                        <p class="text-gray-600 text-sm lg:text-base">Google BI</p>
+                        <p class="text-gray-600 text-sm lg:text-base">Firebase</p>
+                        <p class="text-gray-600 text-sm lg:text-base">Advanced SQL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="bg-gray-50">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800">Career Voyage ⛵</h2>
+                <p class="mt-4 text-lg text-gray-600">Navigating through challenges and milestones.</p>
+            </div>
+            <div class="relative max-w-2xl mx-auto">
+                <div class="absolute left-4 top-0 h-full w-0.5 bg-onam-gold opacity-30"></div>
+                <div class="space-y-12">
+                    <!-- Timeline Item 1 -->
+                    <div class="relative pl-12 timeline-item reveal current-job">
+                        <p class="text-onam-gold font-semibold">Jul 2024 - Present ✨</p>
+                        <h3 class="text-2xl font-bold mt-1">Application Engineer</h3>
+                        <p class="font-medium text-gray-700">Bajaj Allianz General Insurance Co.</p>
+                        <p class="mt-2 text-gray-600">Solving real-time application issues and developing robust features across the stack.</p>
+                    </div>
+                    <!-- Timeline Item 2 -->
+                    <div class="relative pl-12 timeline-item reveal">
+                        <p class="text-onam-gold font-semibold">Feb 2024 - Jun 2024</p>
+                        <h3 class="text-2xl font-bold mt-1">Internship Trainee</h3>
+                        <p class="font-medium text-gray-700">Tata Motors Limited, CVBU</p>
+                        <p class="mt-2 text-gray-600">Engaged in live projects focusing on database optimization, UI/UX design, and QA testing.</p>
+                    </div>
+                    <!-- Timeline Item 3 -->
+                    <div class="relative pl-12 timeline-item reveal">
+                        <p class="text-onam-gold font-semibold">Feb 2023 - Apr 2023</p>
+                        <h3 class="text-2xl font-bold mt-1">UI/UX Internship</h3>
+                        <p class="font-medium text-gray-700">Imaginext Tech Solutions, Ltd.</p>
+                        <p class="mt-2 text-gray-600">Created a complete academic web application from the ground up using Angular and Laravel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section (Hidden) -->
+    <section id="projects" hidden>
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800">A Sadya of Projects 🍛</h2>
+                <p class="mt-4 text-lg text-gray-600">A curated selection of my work, each crafted with a unique flavor of technology.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="sadya-card p-6 reveal">
+                    <h3 class="text-2xl font-bold text-gray-800">Academic Web Application</h3>
+                    <p class="mt-2 text-gray-600">A comprehensive academic management portal built during my internship at Imaginext Tech Solutions.</p>
+                    <p class="mt-4 font-semibold text-green-700">Tech Stack: Angular, Laravel</p>
+                    <div class="mt-4 space-x-2">
+                        <a href="#" class="text-onam-gold font-bold hover:underline">GitHub →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="bg-gray-50">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800">Accolades & Certifications 🏆</h2>
+                 <p class="mt-4 text-lg text-gray-600">Validating expertise through continuous learning.</p>
+            </div>
+            <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 text-center reveal">
+                <div class="cert-tile bg-yellow-50 text-yellow-800 p-4 rounded-lg shadow-sm flex items-center justify-center font-semibold">Google Business Intelligence</div>
+                <div class="cert-tile bg-blue-50 text-blue-800 p-4 rounded-lg shadow-sm flex items-center justify-center font-semibold">Generative AI Fundamentals</div>
+                <div class="cert-tile bg-green-50 text-green-800 p-4 rounded-lg shadow-sm flex items-center justify-center font-semibold">Google Cloud Foundations</div>
+                <div class="cert-tile bg-purple-50 text-purple-800 p-4 rounded-lg shadow-sm flex items-center justify-center font-semibold">ML Image Classifier</div>
+                <div class="cert-tile bg-gray-100 text-gray-800 p-4 rounded-lg shadow-sm flex items-center justify-center font-semibold">SQL (Advanced)</div>
+                <div class="cert-tile bg-blue-50 text-blue-800 p-4 rounded-lg shadow-sm flex items-center justify-center font-semibold">CCAI Insights</div>
+                <div class="cert-tile bg-green-50 text-green-800 p-4 rounded-lg shadow-sm flex items-center justify-center font-semibold">Load Balancing on GCP</div>
+                <div class="cert-tile bg-rose-50 text-rose-800 p-4 rounded-lg shadow-sm flex items-center justify-center font-semibold">Proficiency in Comp. App</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto bg-white rounded-2xl p-8 lg:p-12 shadow-2xl border-t-8 border-onam-gold reveal">
+                <div class="text-center">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800">Let's Create Together 🤝</h2>
+                    <p class="mt-4 text-lg text-gray-600">I'm always excited to discuss new projects or opportunities. Feel free to reach out.</p>
+                </div>
+                
+                <div class="mt-10 text-center space-y-4">
+                    <p class="text-xl text-gray-700">
+                       <a href="mailto:pritish.rajpurohit@outlook.com" class="font-semibold text-onam-gold hover:underline">📧 pritish.rajpurohit@outlook.com</a>
+                    </p>
+                     <p class="mt-2 text-lg text-gray-600">📞 (+91) 86059-88403</p>
+                     <p class="mt-2 text-lg text-gray-600">📍 Pune, Maharashtra</p>
+               </div>
+
+                <div class="mt-8 flex justify-center space-x-6">
+                    <a href="https://github.com/smashcoder" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-onam-gold transition">
+                        <span class="sr-only">GitHub</span>
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <!-- Add LinkedIn SVG icon here if you have the link -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto text-center px-6">
+            <p>&copy; <span id="year"></span> Pritish Rajpurohit. All Rights Reserved.</p>
+            <p class="text-sm text-gray-400 mt-1">Designed with inspiration from Onam's vibrant culture.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Scroll Reveal Animation Logic
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, {
+            threshold: 0.5 
+        });
+        revealElements.forEach(elem => {
+            revealObserver.observe(elem);
+        });
+
+        // Side Navigation Logic
+        const sections = document.querySelectorAll('section');
+        const navDots = document.querySelectorAll('.nav-dot');
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.id;
+                    navDots.forEach(dot => {
+                        dot.classList.remove('active');
+                        if (dot.getAttribute('data-section') === sectionId) {
+                            dot.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, {
+            threshold: 0.7 // Trigger when 70% of a section is visible
+        });
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+    </script>
+</body>
+</html>
+
