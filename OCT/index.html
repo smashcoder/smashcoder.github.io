@@ -7,9 +7,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
     <style>
-        /* Custom CSS for Aesthetic Diwali Theme */
+        /* UI SIMPLIFICATION: Aesthetic, Modern, Cultural Diwali Theme */
         @keyframes breathing-bg {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -18,12 +18,9 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #ffffff; /* Clean white background */
-            background-image: linear-gradient(45deg, #fffaf0, #ffffff, #fffaf0);
-            background-size: 400% 400%;
-            color: #4a4a4a;
+            background-color: #fdf8f0; /* Unified soft, creamy off-white */
+            color: #333; /* Darker text for better contrast */
             overflow-x: hidden;
-            animation: breathing-bg 20s ease infinite;
         }
         
         #fireworks-canvas {
@@ -36,7 +33,6 @@
             pointer-events: none;
         }
         
-        /* Preloader Styles */
         #preloader {
             transition: opacity 1s ease-in-out;
         }
@@ -52,143 +48,119 @@
         }
 
         html {
-            scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
         }
-        section {
-            scroll-snap-align: start;
-        }
-
+        
         /* Aesthetic Cursor */
         html {
-            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3Cfilter id='glow' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='2' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='6' fill='%23ff8c00' filter='url(%23glow)'/%3E%3Ccircle cx='16' cy='16' r='8' stroke='%23ffc971' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") 16 16, auto;
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3Cfilter id='glow' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='2' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='6' fill='%23D4AF37' filter='url(%23glow)'/%3E%3Ccircle cx='16' cy='16' r='8' stroke='%23FFD700' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") 16 16, auto;
         }
         a:hover, button:hover {
-             cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3Cfilter id='glow' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='3' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='8' fill='%23ff6347' filter='url(%23glow)'/%3E%3C/svg%3E") 16 16, auto;
+             cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3Cfilter id='glow' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='3' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='8' fill='%23E95420' filter='url(%23glow)'/%3E%3C/svg%3E") 16 16, auto;
         }
-
 
         .font-diwali {
             font-family: 'Tiro Devanagari Hindi', serif;
         }
         
-        .rangoli-border {
-            border: 3px solid;
-            border-image-slice: 1;
-            border-image-source: linear-gradient(to right, #ff8c00, #ff4500, #ffa500);
-            position: relative;
-            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
+        .content-box {
+            border: 1px solid rgba(233, 84, 32, 0.2);
+            box-shadow: 0 10px 40px rgba(233, 84, 32, 0.1);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(5px);
-            background: rgba(255, 255, 255, 0.6);
+            border-radius: 1.5rem;
         }
-
-        .rangoli-border::before, .rangoli-border::after {
-            content: '✧';
-            position: absolute;
-            font-size: 2rem;
-            color: #ff6347;
-            animation: spin 10s linear infinite;
-        }
-        .rangoli-border::before { top: -22px; left: -22px; }
-        .rangoli-border::after { bottom: -22px; right: -22px; animation-direction: reverse; }
-
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         
-        /* Animated Gradient for Name */
         @keyframes slide-gradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
         .animate-gradient-text {
-            background-size: 300% 300%;
-            animation: slide-gradient 10s ease-in-out infinite;
+            background-size: 200% 200%;
+            animation: slide-gradient 8s ease-in-out infinite;
         }
         
         .reveal {
             opacity: 0;
-            transform: translateY(50px) scale(0.95);
+            transform: translateY(40px) scale(0.98);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
 
         .timeline::before {
-            content: ''; position: absolute; left: 50%; transform: translateX(-50%);
-            top: 0; bottom: 0; width: 3px;
-            background-image: linear-gradient(to bottom, #ffffff, #ffd3a7, #ffffff);
+            content: ''; position: absolute; left: 20px;
+            top: 0; bottom: 0; width: 2px;
+            background-image: linear-gradient(to bottom, #FFD700, #E95420);
             border-radius: 2px;
         }
 
-        .timeline-item { position: relative; width: 50%; padding: 20px 40px; box-sizing: border-box; }
-        .timeline-item:nth-child(odd) { left: 0; padding-right: 20px; text-align: right; }
-        .timeline-item:nth-child(even) { left: 50%; padding-left: 60px; text-align: left; }
+        .timeline-item { position: relative; width: 100%; padding-left: 60px; }
         
         .timeline-item::after {
-            content: '🔸'; position: absolute; top: 25px;
+            content: '🪔'; position: absolute; top: 25px; left: 8px;
             font-size: 1.5rem; z-index: 1;
-            color: #ffffff;
-            text-shadow: 0 0 10px #ffc971;
-            animation: pulse-diya 2s infinite;
+            color: #FF8C00;
+            text-shadow: 0 0 15px #FFD700;
+            animation: pulse-diya 2.5s infinite;
         }
         @keyframes pulse-diya {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.3); }
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
         }
-        .timeline-item:nth-child(odd)::after { right: -12px; }
-        .timeline-item:nth-child(even)::after { left: -12px; }
         
         .card-glow {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 140, 0, 0.2);
-            border-radius: 1rem;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 1.25rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
         .card-glow:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(255, 140, 0, 0.3);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(233, 84, 32, 0.15);
         }
         
         .current-job {
-            box-shadow: 0 0 35px rgba(255, 255, 255, 0.6);
-            border-color: #ffffff !important;
-            transform: scale(1.02);
-        }
-
-        /* Aesthetic Section Divider */
-        .section-divider {
-            text-align: center;
-            padding: 2rem 0;
-            margin: 0;
-        }
-        .section-divider svg {
-            width: 80%;
-            max-width: 150px;
-            height: auto;
-            stroke: #ff8c00;
-            opacity: 0.6;
+            border-left: 4px solid #E95420;
         }
         
-        /* Skillset UI */
         .skill-item {
-            border-radius: 1rem;
+            border-radius: 1.25rem;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
-            border-bottom: 4px solid #ff8c00;
         }
         .skill-item:hover {
             transform: translateY(-12px);
-            box-shadow: 0 20px 40px rgba(255, 140, 0, 0.25);
         }
         .skill-item .icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             line-height: 1;
             transition: transform 0.4s ease;
+            background: -webkit-linear-gradient(45deg, #E95420, #FF8C00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .skill-item:hover .icon {
-            transform: rotateY(360deg);
+            transform: scale(1.1) rotate(10deg);
         }
 
-        /* Dot Navigation */
+        @keyframes emoji-tada { 0% {transform: scale(1);} 10%, 20% {transform: scale(0.9) rotate(-3deg);} 30%, 50%, 70%, 90% {transform: scale(1.2) rotate(3deg);} 40%, 60%, 80% {transform: scale(1.2) rotate(-3deg);} 100% {transform: scale(1) rotate(0);} }
+        .group:hover .cert-emoji-animate { animation: emoji-tada 1s ease; }
+        
+        .contact-link {
+            transition: all 0.3s ease;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            background-color: #E95420;
+            color: white;
+            border: 1px solid transparent;
+        }
+        .contact-link:hover {
+            background-color: #c84518;
+            box-shadow: 0 10px 20px rgba(233, 84, 32, 0.3);
+            transform: translateY(-2px);
+        }
+        
         #dot-nav {
             position: fixed;
             right: 20px;
@@ -196,108 +168,45 @@
             transform: translateY(-50%);
             z-index: 50;
         }
-        #dot-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem; /* 20px */
-        }
-        .dot {
-            display: block;
-            width: 12px;
-            height: 12px;
-            background-color: white;
-            border: 1px solid #ffb061;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        .dot.active, .dot:hover {
-            background-color: #ff6347;
-            border-color: #ff6347;
-            transform: scale(1.5);
-        }
-        .dot .tooltip {
-            position: absolute;
-            top: 50%;
-            right: 150%;
-            transform: translateY(-50%);
-            background-color: #4a4a4a;
-            color: #fffaf0;
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 0.875rem;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        .dot:hover .tooltip {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Emoji Animations */
-        @keyframes emoji-tada { 0% {transform: scale(1);} 10%, 20% {transform: scale(0.9) rotate(-3deg);} 30%, 50%, 70%, 90% {transform: scale(1.2) rotate(3deg);} 40%, 60%, 80% {transform: scale(1.2) rotate(-3deg);} 100% {transform: scale(1) rotate(0);} }
-        .group:hover .cert-emoji-animate { animation: emoji-tada 1s ease; }
+        #dot-nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.25rem; }
+        .dot { display: block; width: 10px; height: 10px; background-color: rgba(76, 26, 26, 0.3); border-radius: 50%; transition: all 0.3s ease; position: relative; border: 1px solid transparent; }
+        .dot.active, .dot:hover { background-color: #E95420; transform: scale(1.8); border-color: #fdf8f0; }
+        .dot .tooltip { position: absolute; top: 50%; right: 150%; transform: translateY(-50%); background-color: #4C1A1A; color: #fdf8f0; padding: 4px 12px; border-radius: 6px; font-size: 0.875rem; white-space: nowrap; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .dot:hover .tooltip { opacity: 1; visibility: visible; }
         
-        /* NEW Orange Section Styles */
-        .orange-section {
-            background-color: #ff8c00;
-            background-image: linear-gradient(45deg, #ff7e5f, #feb47b); /* Softer, cleaner gradient */
-            color: #ffffff;
-            margin-top: -1px;
-            margin-bottom: -1px;
+        /* New Section Divider */
+        .section-divider {
+            text-align: center;
+            padding: 4rem 0;
+            margin: 0;
         }
-        .orange-section h2.font-diwali, .orange-section h2 {
-            background: none;
-            background-clip: unset;
-            -webkit-background-clip: unset;
-            -webkit-text-fill-color: unset;
-            color: #ffffff;
-            text-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        .section-divider svg {
+            width: 250px;
+            height: auto;
+            stroke-width: 0.5;
+            stroke: #E95420;
+            opacity: 0.7;
         }
-        .orange-section .text-gray-700, .orange-section .text-gray-600, .orange-section .text-gray-500 {
-            color: rgba(255, 255, 255, 0.9);
-        }
-        .orange-section .rangoli-border {
-            background: rgba(255, 255, 255, 0.15);
-            border-image-source: linear-gradient(to right, #ffffff, #ffd3a7, #ffffff);
-        }
-        .orange-section .card-glow {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-        .orange-section .card-glow:hover {
-             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-        .orange-section .current-job {
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.7);
-            border: 2px solid #ffffff !important;
-            background: rgba(255, 255, 255, 0.2);
-        }
-        .orange-section .timeline-item:nth-of-type(1) h3 { color: #FFFDE7; font-weight: bold; } /* Creamy White */
-        .orange-section .timeline-item:nth-of-type(2) h3 { color: #FFFBEB; font-weight: bold; } /* Lighter Cream */
-        .orange-section .timeline-item:nth-of-type(3) h3 { color: #FFFFFF; font-weight: bold; } /* Pure White */
 
-        .orange-section .section-divider svg { stroke: #ffffff; }
-        .orange-section a { color: #ffffff; }
-        .orange-section a:hover { color: #fffaf0; text-decoration: underline; }
+        .deity-icon {
+            position: absolute;
+            bottom: 2rem;
+            width: 80px;
+            height: 80px;
+            opacity: 0.1;
+            z-index: 1;
+        }
 
         @media (max-width: 768px) {
-            .timeline::before { left: 20px; }
-            .timeline-item { width: 100%; left: 0 !important; padding-left: 60px; padding-right: 20px; text-align: left !important; }
-            .timeline-item:nth-child(odd)::after, .timeline-item:nth-child(even)::after { left: 8px; }
-            #dot-nav { right: 10px; }
-            .dot { width: 10px; height: 10px; }
+            #dot-nav { display: none; }
+            .deity-icon { display: none; }
         }
+
     </style>
 </head>
 <body>
 
-    <div id="preloader" class="fixed inset-0 bg-[#fffaf0] flex items-center justify-center z-[100]">
+    <div id="preloader" class="fixed inset-0 bg-[#fdf8f0] flex items-center justify-center z-[100]">
         <div id="preloader-text-1" class="font-diwali text-7xl md:text-8xl text-orange-600 opacity-0 preloader-text font-bold">नमस्ते 🙏</div>
         <div id="preloader-text-2" class="font-diwali text-5xl md:text-6xl text-orange-600 opacity-0 absolute text-center preloader-text font-bold">आपको दिवाली की<br>हार्दिक शुभकामनाएँ</div>
     </div>
@@ -316,16 +225,27 @@
     </nav>
     
     <main class="relative z-10 opacity-0" style="transition: opacity 1.5s ease-in-out;">
-        <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-6">
-            <h1 class="text-5xl md:text-8xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 animate-gradient-text">Pritish Rajpurohit</h1>
-            <p class="text-xl md:text-3xl text-gray-600 font-light mt-2">Full Stack Developer & AI/ML Engineer</p>
+        <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative">
+             <!-- Ganesha Icon -->
+            <svg class="deity-icon left-4 md:left-1/4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#D4AF37"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 12H8V11C8 9.66 8.46 8.5 10.38 7.9C11.37 7.6 12 7.08 12 6.13V5.41C12 4.02 11.23 3.1 10.5 2.5C9.28 1.5 7.5 2.5 7.5 2.5M10.5 2.5C10.71 2.29 11.33 2.19 12 2.5C12.89 3 13.5 3.88 13.5 5.41V6.13C13.5 8.11 10.5 9 10.5 9M7.5 2.5S6.03 3.65 6.03 5.41V10.8C6.03 12.57 4.5 14 4.5 14H6V17.02C6 19.23 7.79 21 10 21C12.21 21 14 19.23 14 17.02V13.53C14 11.58 12.42 10 10.47 10H8M16 14C16 14 16.14 13.43 16.5 13.2C16.86 12.97 17.5 13.04 17.5 13.04C17.5 13.04 18.5 12.44 18.5 11.41C18.5 10.38 17.5 9.5 17.5 9.5C17.5 9.5 17.14 9.09 16.5 9.02C15.86 8.95 15.5 9.5 15.5 9.5L14 11.41M16 14L18 15.5M16 14H15L14 15.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+            <!-- Lakshmi Icon -->
+            <svg class="deity-icon right-4 md:right-1/4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#D4AF37"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15.5 13.5C15.5 13.5 16.34 14.36 17.18 14.36C18.02 14.36 19 13.5 19 13.5M19 13.5C19.84 12.66 20.32 10.55 19.5 9.5C18.68 8.45 17 8.5 17 8.5C17 8.5 16.16 8.45 15.5 9C14.84 9.55 14.5 11 14.5 12C14.5 13 15.5 13.5 15.5 13.5M19 13.5L21 12M15.5 13.5L14 15.5M8.5 13.5C8.5 13.5 7.66 14.36 6.82 14.36C5.98 14.36 5 13.5 5 13.5M5 13.5C4.16 12.66 3.68 10.55 4.5 9.5C5.32 8.45 7 8.5 7 8.5C7 8.5 7.84 8.45 8.5 9C9.16 9.55 9.5 11 9.5 12C9.5 13 8.5 13.5 8.5 13.5M5 13.5L3 12M8.5 13.5L10 15.5M12 21V13M12 13C10.5 13 9.78 11.23 10.5 9.5C11.22 7.77 12.78 7.77 13.5 9.5C14.22 11.23 13.5 13 12 13ZM12 13H11.5M12 13H12.5M12 3C12 3 11 4.5 11 6C11 7.5 12 9 12 9M12 3C12 3 13 4.5 13 6C13 7.5 12 9 12 9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+            <h1 class="text-5xl md:text-8xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 animate-gradient-text z-10">Pritish Rajpurohit</h1>
+            <p class="text-xl md:text-3xl text-gray-500 font-light mt-2 tracking-wide z-10">Full Stack Developer & AI/ML Engineer</p>
         </section>
 
-        <section id="about" class="min-h-screen flex flex-col justify-center reveal orange-section">
+        <div class="section-divider reveal">
+            <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 10 Q 10 2, 20 10 T 40 10 T 60 10 T 80 10 T 98 10" stroke-linecap="round" stroke-width="0.5" fill="none"/>
+                <path d="M25 10 L 75 10 M 50 2 L 50 18 M 45 14 L 50 19 L 55 14" stroke-linecap="round" stroke-width="0.5" fill="none" />
+            </svg>
+        </div>
+
+        <section id="about" class="min-h-screen flex flex-col justify-center reveal py-20">
             <div class="container mx-auto px-6">
-                <h2 class="font-diwali text-5xl text-center mb-12">🪔 About Me 🪔</h2>
-                <div class="max-w-4xl mx-auto p-8 rounded-lg rangoli-border">
-                    <p class="text-lg leading-relaxed">
+                <h2 class="font-diwali text-5xl text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">🌺 About Me 🌺</h2>
+                <div class="max-w-4xl mx-auto p-8 md:p-12 content-box">
+                    <p class="text-lg leading-relaxed text-center">
                         AI/ML Engineer with 2+ years of experience, specializing in Android Development, Firebase, and Cloud Computing (AWS, GCP). I'm a certified Google Business Intelligence professional, adept in database management and passionate about creating intuitive web applications. My project experience spans across diverse frameworks including Angular, Laravel, Django, Flask, and Flutter, allowing me to build robust and scalable solutions from the ground up. 🚀
                     </p>
                 </div>
@@ -334,97 +254,105 @@
 
         <div class="section-divider reveal">
             <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 10 C 20 0, 30 0, 50 10 S 80 20, 100 10" fill="none" stroke-width="0.5"/>
-                <path d="M0 10 C 20 20, 30 20, 50 10 S 80 0, 100 10" fill="none" stroke-width="0.5" />
+                <path d="M2 10 Q 10 2, 20 10 T 40 10 T 60 10 T 80 10 T 98 10" stroke-linecap="round" stroke-width="0.5" fill="none"/>
+                <path d="M25 10 L 75 10 M 50 2 L 50 18 M 45 14 L 50 19 L 55 14" stroke-linecap="round" stroke-width="0.5" fill="none" />
             </svg>
         </div>
 
-        <section id="skills" class="min-h-screen flex flex-col justify-center reveal">
+        <section id="skills" class="min-h-screen flex flex-col justify-center reveal py-20">
             <div class="container mx-auto px-6">
-                <h2 class="font-diwali text-5xl text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500">🪔 My Skillset 🪔</h2>
+                <h2 class="font-diwali text-5xl text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">🏹 My Skillset 🏹</h2>
                 <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="skill-item p-6 text-center card-glow">
                         <div class="icon mb-4">🧠</div>
-                        <h3 class="text-2xl font-bold mb-2 text-orange-600">AI & Machine Learning</h3>
-                        <p class="text-gray-600">Django, Flask, Python, Scikit-learn</p>
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-800">AI & Machine Learning</h3>
+                        <p class="text-gray-600 font-light">Django, Flask, Python, Scikit-learn</p>
                     </div>
                     <div class="skill-item p-6 text-center card-glow">
                         <div class="icon mb-4">☁️</div>
-                        <h3 class="text-2xl font-bold mb-2 text-orange-600">Cloud & DevOps</h3>
-                        <p class="text-gray-600">AWS, GCP, Firebase, CI/CD</p>
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-800">Cloud & DevOps</h3>
+                        <p class="text-gray-600 font-light">AWS, GCP, Firebase, CI/CD</p>
                     </div>
                     <div class="skill-item p-6 text-center card-glow">
                         <div class="icon mb-4">📱</div>
-                        <h3 class="text-2xl font-bold mb-2 text-orange-600">App Development</h3>
-                        <p class="text-gray-600">Android (Java/Kotlin), Flutter</p>
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-800">App Development</h3>
+                        <p class="text-gray-600 font-light">Android (Java/Kotlin), Flutter</p>
                     </div>
                     <div class="skill-item p-6 text-center card-glow">
                         <div class="icon mb-4">🕸️</div>
-                        <h3 class="text-2xl font-bold mb-2 text-orange-600">Web Development</h3>
-                        <p class="text-gray-600">Angular, Laravel, HTML, CSS, JS</p>
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-800">Web Development</h3>
+                        <p class="text-gray-600 font-light">Angular, Laravel, HTML, CSS, JS</p>
                     </div>
                     <div class="skill-item p-6 text-center card-glow">
                         <div class="icon mb-4">🗃️</div>
-                        <h3 class="text-2xl font-bold mb-2 text-orange-600">Databases</h3>
-                        <p class="text-gray-600">SQL, MySQL, Database Management</p>
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-800">Databases</h3>
+                        <p class="text-gray-600 font-light">SQL, MySQL, Database Management</p>
                     </div>
                     <div class="skill-item p-6 text-center card-glow">
                         <div class="icon mb-4">📊</div>
-                        <h3 class="text-2xl font-bold mb-2 text-orange-600">Business Intelligence</h3>
-                        <p class="text-gray-600">Google BI, Data Analysis, Reporting</p>
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-800">Business Intelligence</h3>
+                        <p class="text-gray-600 font-light">Google BI, Data Analysis, Reporting</p>
                     </div>
                 </div>
             </div>
         </section>
         
-        <div class="section-divider reveal orange-section" style="padding: 2rem 0; margin: 0;">
+        <div class="section-divider reveal">
             <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 10 C 20 0, 30 0, 50 10 S 80 20, 100 10" fill="none" stroke-width="0.5"/>
-                <path d="M0 10 C 20 20, 30 20, 50 10 S 80 0, 100 10" fill="none" stroke-width="0.5" />
+                <path d="M2 10 Q 10 2, 20 10 T 40 10 T 60 10 T 80 10 T 98 10" stroke-linecap="round" stroke-width="0.5" fill="none"/>
+                <path d="M25 10 L 75 10 M 50 2 L 50 18 M 45 14 L 50 19 L 55 14" stroke-linecap="round" stroke-width="0.5" fill="none" />
             </svg>
         </div>
-        
-        <section id="experience" class="min-h-screen flex flex-col justify-center reveal orange-section">
+
+        <section id="experience" class="min-h-screen flex flex-col justify-center reveal py-20">
             <div class="container mx-auto px-6">
-                <h2 class="font-diwali text-5xl text-center mb-16">🪔 Professional Journey 🪔</h2>
-                <div class="relative max-w-4xl mx-auto timeline">
-                    <div class="timeline-item reveal"><div class="p-6 rounded-lg card-glow current-job"><h3 class="text-xl">Application Engineer</h3><p class="text-md font-semibold mb-2">Bajaj Allianz General Insurance Co.</p><p class="text-sm mb-2">Jul 2024 - Present</p><p>Solving real-time application issues and developing robust features across the stack.</p></div></div>
-                    <div class="timeline-item reveal"><div class="p-6 rounded-lg card-glow"><h3 class="text-xl">Internship Trainee</h3><p class="text-md font-semibold mb-2">Tata Motors Limited, CVBU</p><p class="text-sm mb-2">Feb 2024 - Jun 2024</p><p>Engaged in live projects focusing on database optimization, UI/UX design, and QA testing.</p></div></div>
-                    <div class="timeline-item reveal"><div class="p-6 rounded-lg card-glow"><h3 class="text-xl">UI/UX Internship</h3><p class="text-md font-semibold mb-2">Imaginext Tech Solutions, Ltd.</p><p class="text-sm mb-2">Feb 2023 - Apr 2023</p><p>Created a complete academic web app using Angular and Laravel.</p></div></div>
+                <h2 class="font-diwali text-5xl text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">🪔 Professional Journey 🪔</h2>
+                <div class="relative max-w-2xl mx-auto timeline space-y-8">
+                    <div class="timeline-item reveal"><div class="p-6 rounded-lg card-glow current-job"><h3 class="text-xl font-semibold text-gray-800">Senior Application Engineer</h3><p class="text-md font-semibold mb-2 text-orange-600">Bajaj Allianz General Insurance Co.</p><p class="text-sm mb-2 opacity-80">Jul 2025 - Present</p><p class="font-light text-gray-600">Leading feature development, mentoring junior engineers, and optimizing application performance.</p></div></div>
+                    <div class="timeline-item reveal"><div class="p-6 rounded-lg card-glow"><h3 class="text-xl font-semibold text-gray-800">Application Engineer</h3><p class="text-md font-semibold mb-2 text-orange-600">Bajaj Allianz General Insurance Co.</p><p class="text-sm mb-2 opacity-80">Jul 2024 - Jul 2025</p><p class="font-light text-gray-600">Solving real-time application issues and developing robust features across the stack.</p></div></div>
+                    <div class="timeline-item reveal"><div class="p-6 rounded-lg card-glow"><h3 class="text-xl font-semibold text-gray-800">Internship Trainee</h3><p class="text-md font-semibold mb-2 text-orange-600">Tata Motors Limited, CVBU</p><p class="text-sm mb-2 opacity-80">Feb 2024 - Jun 2024</p><p class="font-light text-gray-600">Engaged in live projects focusing on database optimization, UI/UX design, and QA testing.</p></div></div>
+                    <div class="timeline-item reveal"><div class="p-6 rounded-lg card-glow"><h3 class="text-xl font-semibold text-gray-800">UI/UX Internship</h3><p class="text-md font-semibold mb-2 text-orange-600">Imaginext Tech Solutions, Ltd.</p><p class="text-sm mb-2 opacity-80">Feb 2023 - Apr 2023</p><p class="font-light text-gray-600">Created a complete academic web app using Angular and Laravel.</p></div></div>
                 </div>
             </div>
         </section>
 
         <div class="section-divider reveal">
             <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 10 C 20 0, 30 0, 50 10 S 80 20, 100 10" fill="none" stroke-width="0.5"/>
-                <path d="M0 10 C 20 20, 30 20, 50 10 S 80 0, 100 10" fill="none" stroke-width="0.5" />
+                <path d="M2 10 Q 10 2, 20 10 T 40 10 T 60 10 T 80 10 T 98 10" stroke-linecap="round" stroke-width="0.5" fill="none"/>
+                <path d="M25 10 L 75 10 M 50 2 L 50 18 M 45 14 L 50 19 L 55 14" stroke-linecap="round" stroke-width="0.5" fill="none" />
             </svg>
         </div>
-        
-        <section id="certifications" class="min-h-screen flex flex-col justify-center reveal">
+
+        <section id="certifications" class="min-h-screen flex flex-col justify-center reveal py-20">
              <div class="container mx-auto px-6">
-                <h2 class="font-diwali text-5xl text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500">🪔 Certifications 🪔</h2>
+                <h2 class="font-diwali text-5xl text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">🏆 Certifications 🏆</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-2xl cert-emoji-animate">🏆</span><div><h4 class="font-semibold">Google Business Intelligence</h4><p class="text-sm text-gray-500">Coursera</p></div></div>
-                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-2xl cert-emoji-animate">🏆</span><div><h4 class="font-semibold">CCAI Insights</h4><p class="text-sm text-gray-500">Google Cloud</p></div></div>
-                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-2xl cert-emoji-animate">🏆</span><div><h4 class="font-semibold">ML Image Classifier with Python</h4><p class="text-sm text-gray-500">Coursera</p></div></div>
-                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-2xl cert-emoji-animate">🏆</span><div><h4 class="font-semibold">Generative AI Fundamentals</h4><p class="text-sm text-gray-500">Google Cloud</p></div></div>
-                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-2xl cert-emoji-animate">🏆</span><div><h4 class="font-semibold">Google Cloud Foundations</h4><p class="text-sm text-gray-500">Google Cloud</p></div></div>
-                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-2xl cert-emoji-animate">🏆</span><div><h4 class="font-semibold">SQL (Advanced)</h4><p class="text-sm text-gray-500">HackerRank</p></div></div>
+                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-3xl cert-emoji-animate">🏅</span><div><h4 class="font-semibold text-gray-800">Google Business Intelligence</h4><p class="text-sm text-gray-500 font-light">Coursera</p></div></div>
+                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-3xl cert-emoji-animate">🏅</span><div><h4 class="font-semibold text-gray-800">CCAI Insights</h4><p class="text-sm text-gray-500 font-light">Google Cloud</p></div></div>
+                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-3xl cert-emoji-animate">🏅</span><div><h4 class="font-semibold text-gray-800">ML Image Classifier</h4><p class="text-sm text-gray-500 font-light">Coursera</p></div></div>
+                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-3xl cert-emoji-animate">🏅</span><div><h4 class="font-semibold text-gray-800">Generative AI Fundamentals</h4><p class="text-sm text-gray-500 font-light">Google Cloud</p></div></div>
+                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-3xl cert-emoji-animate">🏅</span><div><h4 class="font-semibold text-gray-800">Google Cloud Foundations</h4><p class="text-sm text-gray-500 font-light">Google Cloud</p></div></div>
+                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-3xl cert-emoji-animate">🏅</span><div><h4 class="font-semibold text-gray-800">SQL (Advanced)</h4><p class="text-sm text-gray-500 font-light">HackerRank</p></div></div>
                 </div>
             </div>
         </section>
         
-        <section id="contact" class="min-h-screen flex flex-col justify-center text-center reveal orange-section">
+        <div class="section-divider reveal">
+            <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 10 Q 10 2, 20 10 T 40 10 T 60 10 T 80 10 T 98 10" stroke-linecap="round" stroke-width="0.5" fill="none"/>
+                <path d="M25 10 L 75 10 M 50 2 L 50 18 M 45 14 L 50 19 L 55 14" stroke-linecap="round" stroke-width="0.5" fill="none" />
+            </svg>
+        </div>
+
+        <section id="contact" class="min-h-screen flex flex-col justify-center text-center reveal py-20">
             <div class="container mx-auto px-6">
-                <h2 class="font-diwali text-5xl mb-10">🪔 Get In Touch 🪔</h2>
-                 <p class="max-w-2xl mx-auto mb-8 text-lg font-light">I'm always open to new opportunities and collaborations. Let's create something amazing together!</p>
+                <h2 class="font-diwali text-5xl mb-10 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">📨 Get In Touch 📨</h2>
+                 <p class="max-w-2xl mx-auto mb-10 text-lg font-light opacity-90 text-gray-600">I'm always open to new opportunities and collaborations. Let's create something amazing together!</p>
                  <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-8 text-lg">
-                    <a href="mailto:pritish.rajpurohit@outlook.com" class="font-semibold transition duration-300">📧 pritish.rajpurohit@outlook.com</a>
-                    <a href="https://smashcoder.github.io" target="_blank" class="font-semibold transition duration-300">🔗 smashcoder.github.io</a>
+                    <a href="mailto:pritish.rajpurohit@outlook.com" class="font-semibold contact-link">📧 Email Me</a>
+                    <a href="https://smashcoder.github.io" target="_blank" class="font-semibold contact-link">🔗 My Work</a>
                  </div>
-                 <p class="mt-8">📞 (+91) 86059-88403 | 📍 Pune, Maharashtra</p>
+                 <p class="mt-10 opacity-80 text-gray-500">📞 (+91) 86059-88403 | 📍 Pune, Maharashtra</p>
             </div>
         </section>
 
@@ -497,9 +425,9 @@
                     });
                 }
             });
-        }, { rootMargin: '-50% 0px -50% 0px' }); 
+        }, { rootMargin: '-50% 0px -50% 0px' });
         sections.forEach(section => { navObserver.observe(section); });
-        
+
         // --- Firecracker Bursting Animation ---
         const canvas = document.getElementById('fireworks-canvas');
         const ctx = canvas.getContext('2d');
@@ -603,7 +531,7 @@
         function loop() {
             requestAnimationFrame(loop);
             ctx.globalCompositeOperation = 'destination-out';
-            ctx.fillStyle = 'rgba(255, 250, 246, 0.15)'; // Softer fade effect
+            ctx.fillStyle = 'rgba(253, 248, 240, 0.15)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.globalCompositeOperation = 'lighter';
 
