@@ -20,7 +20,8 @@
             font-family: 'Poppins', sans-serif;
             background-color: #fdf8f0; /* Unified soft, creamy off-white */
             color: #333; /* Darker text for better contrast */
-            overflow-x: hidden;
+            /* overflow: hidden; */ /* Removed to fix blank screen issue */
+            padding-bottom: 100px; /* Adjusted space for the smaller fixed footer */
         }
         
         #fireworks-canvas {
@@ -49,6 +50,28 @@
 
         html {
             scroll-behavior: smooth;
+        }
+        
+        /* main {
+             height: 100vh;
+             overflow-y: scroll;
+             scroll-behavior: smooth;
+        } */
+        
+        /* Hide scrollbar for main container */
+        /* main::-webkit-scrollbar {
+            display: none;
+        }
+        main {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        } */
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         /* Aesthetic Cursor */
@@ -208,7 +231,7 @@
 
     <div id="preloader" class="fixed inset-0 bg-[#fdf8f0] flex items-center justify-center z-[100]">
         <div id="preloader-text-1" class="font-diwali text-7xl md:text-8xl text-orange-600 opacity-0 preloader-text font-bold">नमस्ते 🙏</div>
-        <div id="preloader-text-2" class="font-diwali text-5xl md:text-6xl text-orange-600 opacity-0 absolute text-center preloader-text font-bold">आपको दिवाली की<br>हार्दिक शुभकामनाएँ</div>
+        <div id="preloader-text-2" class="font-diwali text-5xl md:text-6xl text-orange-600 opacity-0 absolute text-center preloader-text font-bold">आपको दशहरे की<br>हार्दिक शुभकामनाएँ</div>
     </div>
 
     <canvas id="fireworks-canvas"></canvas>
@@ -225,7 +248,7 @@
     </nav>
     
     <main class="relative z-10 opacity-0" style="transition: opacity 1.5s ease-in-out;">
-        <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative">
+        <section id="hero" class="flex flex-col items-center justify-center text-center px-6 relative">
              <!-- Ganesha Icon -->
             <svg class="deity-icon left-4 md:left-1/4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#D4AF37"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 12H8V11C8 9.66 8.46 8.5 10.38 7.9C11.37 7.6 12 7.08 12 6.13V5.41C12 4.02 11.23 3.1 10.5 2.5C9.28 1.5 7.5 2.5 7.5 2.5M10.5 2.5C10.71 2.29 11.33 2.19 12 2.5C12.89 3 13.5 3.88 13.5 5.41V6.13C13.5 8.11 10.5 9 10.5 9M7.5 2.5S6.03 3.65 6.03 5.41V10.8C6.03 12.57 4.5 14 4.5 14H6V17.02C6 19.23 7.79 21 10 21C12.21 21 14 19.23 14 17.02V13.53C14 11.58 12.42 10 10.47 10H8M16 14C16 14 16.14 13.43 16.5 13.2C16.86 12.97 17.5 13.04 17.5 13.04C17.5 13.04 18.5 12.44 18.5 11.41C18.5 10.38 17.5 9.5 17.5 9.5C17.5 9.5 17.14 9.09 16.5 9.02C15.86 8.95 15.5 9.5 15.5 9.5L14 11.41M16 14L18 15.5M16 14H15L14 15.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
             <!-- Lakshmi Icon -->
@@ -241,9 +264,9 @@
             </svg>
         </div>
 
-        <section id="about" class="min-h-screen flex flex-col justify-center reveal py-20">
+        <section id="about" class="flex flex-col justify-center reveal py-20">
             <div class="container mx-auto px-6">
-                <h2 class="font-diwali text-5xl text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">🌺 About Me 🌺</h2>
+                <h2 class="font-diwali text-5xl text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">🪔 मेरे बारे में (About Me) 🪔</h2>
                 <div class="max-w-4xl mx-auto p-8 md:p-12 content-box">
                     <p class="text-lg leading-relaxed text-center">
                         AI/ML Engineer with 2+ years of experience, specializing in Android Development, Firebase, and Cloud Computing (AWS, GCP). I'm a certified Google Business Intelligence professional, adept in database management and passionate about creating intuitive web applications. My project experience spans across diverse frameworks including Angular, Laravel, Django, Flask, and Flutter, allowing me to build robust and scalable solutions from the ground up. 🚀
@@ -259,9 +282,9 @@
             </svg>
         </div>
 
-        <section id="skills" class="min-h-screen flex flex-col justify-center reveal py-20">
+        <section id="skills" class="flex flex-col justify-center reveal py-20">
             <div class="container mx-auto px-6">
-                <h2 class="font-diwali text-5xl text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">🏹 My Skillset 🏹</h2>
+                <h2 class="font-diwali text-5xl text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">🏹 कौशल (My Skillset) 🏹</h2>
                 <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="skill-item p-6 text-center card-glow">
                         <div class="icon mb-4">🧠</div>
@@ -304,9 +327,9 @@
             </svg>
         </div>
 
-        <section id="experience" class="min-h-screen flex flex-col justify-center reveal py-20">
+        <section id="experience" class="flex flex-col justify-center reveal py-20">
             <div class="container mx-auto px-6">
-                <h2 class="font-diwali text-5xl text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">🪔 Professional Journey 🪔</h2>
+                <h2 class="font-diwali text-5xl text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">🪔 व्यावसायिक यात्रा (Professional Journey) 🪔</h2>
                 <div class="relative max-w-2xl mx-auto timeline space-y-8">
                     <div class="timeline-item reveal"><div class="p-6 rounded-lg card-glow current-job"><h3 class="text-xl font-semibold text-gray-800">Senior Application Engineer</h3><p class="text-md font-semibold mb-2 text-orange-600">Bajaj Allianz General Insurance Co.</p><p class="text-sm mb-2 opacity-80">Jul 2025 - Present</p><p class="font-light text-gray-600">Leading feature development, mentoring junior engineers, and optimizing application performance.</p></div></div>
                     <div class="timeline-item reveal"><div class="p-6 rounded-lg card-glow"><h3 class="text-xl font-semibold text-gray-800">Application Engineer</h3><p class="text-md font-semibold mb-2 text-orange-600">Bajaj Allianz General Insurance Co.</p><p class="text-sm mb-2 opacity-80">Jul 2024 - Jul 2025</p><p class="font-light text-gray-600">Solving real-time application issues and developing robust features across the stack.</p></div></div>
@@ -323,9 +346,9 @@
             </svg>
         </div>
 
-        <section id="certifications" class="min-h-screen flex flex-col justify-center reveal py-20">
+        <section id="certifications" class="flex flex-col justify-center reveal py-20">
              <div class="container mx-auto px-6">
-                <h2 class="font-diwali text-5xl text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">🏆 Certifications 🏆</h2>
+                <h2 class="font-diwali text-5xl text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">🏆 प्रमाणपत्र (Certifications) 🏆</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                     <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-3xl cert-emoji-animate">🏅</span><div><h4 class="font-semibold text-gray-800">Google Business Intelligence</h4><p class="text-sm text-gray-500 font-light">Coursera</p></div></div>
                     <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-3xl cert-emoji-animate">🏅</span><div><h4 class="font-semibold text-gray-800">CCAI Insights</h4><p class="text-sm text-gray-500 font-light">Google Cloud</p></div></div>
@@ -344,9 +367,9 @@
             </svg>
         </div>
 
-        <section id="contact" class="min-h-screen flex flex-col justify-center text-center reveal py-20">
+        <section id="contact" class="flex flex-col justify-center text-center reveal py-20">
             <div class="container mx-auto px-6">
-                <h2 class="font-diwali text-5xl mb-10 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">📨 Get In Touch 📨</h2>
+                <h2 class="font-diwali text-5xl mb-10 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">📨 संपर्क करें (Get In Touch) 📨</h2>
                  <p class="max-w-2xl mx-auto mb-10 text-lg font-light opacity-90 text-gray-600">I'm always open to new opportunities and collaborations. Let's create something amazing together!</p>
                  <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-8 text-lg">
                     <a href="mailto:pritish.rajpurohit@outlook.com" class="font-semibold contact-link">📧 Email Me</a>
@@ -358,9 +381,9 @@
 
     </main>
 
-    <footer class="bg-white text-center py-8 border-t border-gray-200 relative z-10">
-        <p class="font-diwali text-xl text-orange-600">Wishing you a bright and prosperous year! ✨</p>
-        <p class="text-gray-600 mt-2">&copy; <span id="current-year">2025</span> Pritish Rajpurohit. Crafted with ❤️ and 🪔.</p>
+    <footer class="bg-white text-center py-4 border-t border-gray-200 fixed bottom-0 w-full z-20">
+        <p class="font-diwali text-lg text-orange-600">विजयादशमी की हार्दिक शुभकामनाएँ! 🏹</p>
+        <p class="text-gray-600 mt-1 text-sm">&copy; <span id="current-year">2025</span> Pritish Rajpurohit. Crafted with ❤️ and 🪔.</p>
     </footer>
 
     <script>
@@ -378,20 +401,20 @@
             setTimeout(() => {
                 text1.style.display = 'none';
                 text2.style.animationName = 'fadeInScale';
-            }, 3100);
+            }, 1500); // Shortened from 3100ms
 
             setTimeout(() => {
                 preloader.style.opacity = '0';
                 mainContent.style.opacity = '1';
                 createFireworkBurst(); // Trigger a special firework burst
-            }, 6100);
+            }, 3000); // Shortened from 6100ms
             
             setTimeout(() => {
                 preloader.style.display = 'none';
-            }, 7100);
+            }, 4000); // Shortened from 7100ms
         });
 
-        // --- Smooth Scrolling ---
+        // --- Smooth Scrolling for anchor links ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -410,7 +433,7 @@
         }, { threshold: 0.1 });
         revealElements.forEach(el => { revealObserver.observe(el); });
 
-        // --- Dot Nav Active State ---
+        // --- Dot Nav Active State on scroll ---
         const sections = document.querySelectorAll('section[id]');
         const navDots = document.querySelectorAll('#dot-nav a');
 
@@ -427,6 +450,7 @@
             });
         }, { rootMargin: '-50% 0px -50% 0px' });
         sections.forEach(section => { navObserver.observe(section); });
+
 
         // --- Firecracker Bursting Animation ---
         const canvas = document.getElementById('fireworks-canvas');
@@ -557,11 +581,14 @@
         // Only start the fireworks loop after the preloader is done
         setTimeout(() => {
             loop();
-        }, 6100); // Match the preloader fadeout
+        }, 3000); // Match the preloader fadeout
 
         // Set dynamic year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
+
+    <script src="assets/js/rvp-script.js"></script>
+
 </body>
 </html>
 
