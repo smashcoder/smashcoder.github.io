@@ -3,588 +3,487 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pritish Rajpurohit | Full Stack Developer</title>
+    <title>Pritish Rajpurohit - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* UI SIMPLIFICATION: Aesthetic, Modern, Cultural Diwali Theme */
-        @keyframes breathing-bg {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        :root {
+            /* "Peacock" Palette */
+            --deep-teal: #003D4C;
+            --luminous-gold: #FFD700;
+            --magenta: #D9006C;
+            --bright-turquoise: #00C9A7;
+            --soft-ivory: #FDF5E6;
+            --card-bg: rgba(0, 25, 32, 0.2);
+        }
+
+        html, body { 
+            overflow: hidden; /* Prevent vertical scroll */
+            height: 100%;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #fdf8f0; /* Unified soft, creamy off-white */
-            color: #333; /* Darker text for better contrast */
-            /* overflow: hidden; */ /* Removed to fix blank screen issue */
-            padding-bottom: 100px; /* Adjusted space for the smaller fixed footer */
+            font-family: 'Inter', sans-serif;
+            background-color: var(--deep-teal);
+            color: var(--soft-ivory);
+        }
+
+        #fireworks-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; mix-blend-mode: screen; opacity: 0.7;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
         }
         
-        #fireworks-canvas {
+        /* Preloader Styles */
+        #preloader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-        
-        #preloader {
+            background-color: var(--deep-teal);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             transition: opacity 1s ease-in-out;
         }
-        @keyframes fadeInScale {
-            0% { opacity: 0; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.05); }
-            100% { opacity: 0; transform: scale(0.8); }
+        .diwali-greeting {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 10vw, 5rem);
+            color: var(--luminous-gold);
+            text-shadow: 0 0 25px var(--luminous-gold);
+            animation: preloader-pulse 2s infinite;
+            text-align: center;
+            padding: 1rem;
         }
-        .preloader-text {
-            animation-duration: 3s;
-            animation-fill-mode: forwards;
-            animation-timing-function: ease-in-out;
+        @keyframes preloader-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* main {
-             height: 100vh;
-             overflow-y: scroll;
-             scroll-behavior: smooth;
-        } */
-        
-        /* Hide scrollbar for main container */
-        /* main::-webkit-scrollbar {
-            display: none;
-        }
-        main {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        } */
-
-        section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        /* Aesthetic Cursor */
-        html {
-            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3Cfilter id='glow' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='2' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='6' fill='%23D4AF37' filter='url(%23glow)'/%3E%3Ccircle cx='16' cy='16' r='8' stroke='%23FFD700' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") 16 16, auto;
-        }
-        a:hover, button:hover {
-             cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3Cfilter id='glow' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='3' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='8' fill='%23E95420' filter='url(%23glow)'/%3E%3C/svg%3E") 16 16, auto;
-        }
-
-        .font-diwali {
-            font-family: 'Tiro Devanagari Hindi', serif;
-        }
-        
-        .content-box {
-            border: 1px solid rgba(233, 84, 32, 0.2);
-            box-shadow: 0 10px 40px rgba(233, 84, 32, 0.1);
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(5px);
-            border-radius: 1.5rem;
-        }
-        
-        @keyframes slide-gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .animate-gradient-text {
-            background-size: 200% 200%;
-            animation: slide-gradient 8s ease-in-out infinite;
-        }
-        
-        .reveal {
+        #preloader.fade-out {
             opacity: 0;
-            transform: translateY(40px) scale(0.98);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
-
-        .timeline::before {
-            content: ''; position: absolute; left: 20px;
-            top: 0; bottom: 0; width: 2px;
-            background-image: linear-gradient(to bottom, #FFD700, #E95420);
-            border-radius: 2px;
         }
 
-        .timeline-item { position: relative; width: 100%; padding-left: 60px; }
-        
-        .timeline-item::after {
-            content: '🪔'; position: absolute; top: 25px; left: 8px;
-            font-size: 1.5rem; z-index: 1;
-            color: #FF8C00;
-            text-shadow: 0 0 15px #FFD700;
-            animation: pulse-diya 2.5s infinite;
+        .initially-hidden {
+            opacity: 0;
         }
-        @keyframes pulse-diya {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.2); opacity: 1; }
-        }
-        
-        .card-glow {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: #fff;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            border-radius: 1.25rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        .card-glow:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(233, 84, 32, 0.15);
-        }
-        
-        .current-job {
-            border-left: 4px solid #E95420;
-        }
-        
-        .skill-item {
-            border-radius: 1.25rem;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-        .skill-item:hover {
-            transform: translateY(-12px);
-        }
-        .skill-item .icon {
-            font-size: 2.5rem;
-            line-height: 1;
-            transition: transform 0.4s ease;
-            background: -webkit-linear-gradient(45deg, #E95420, #FF8C00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .skill-item:hover .icon {
-            transform: scale(1.1) rotate(10deg);
+        .visible {
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
         }
 
-        @keyframes emoji-tada { 0% {transform: scale(1);} 10%, 20% {transform: scale(0.9) rotate(-3deg);} 30%, 50%, 70%, 90% {transform: scale(1.2) rotate(3deg);} 40%, 60%, 80% {transform: scale(1.2) rotate(-3deg);} 100% {transform: scale(1) rotate(0);} }
-        .group:hover .cert-emoji-animate { animation: emoji-tada 1s ease; }
-        
-        .contact-link {
-            transition: all 0.3s ease;
-            padding: 0.75rem 1.5rem;
-            border-radius: 999px;
-            background-color: #E95420;
-            color: white;
-            border: 1px solid transparent;
+        .section-title { 
+            color: var(--luminous-gold); 
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
         }
-        .contact-link:hover {
-            background-color: #c84518;
-            box-shadow: 0 10px 20px rgba(233, 84, 32, 0.3);
-            transform: translateY(-2px);
+
+        /* Main horizontal container */
+        .showcase-container {
+            display: flex;
+            width: 500%; /* 100% for each of the 5 sections */
+            height: 100vh;
+            transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        .showcase-section {
+            width: 100vw;
+            height: 100vh;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            background-size: 80vmin 80vmin;
+            background-position: center;
+            background-repeat: no-repeat;
         }
         
-        #dot-nav {
+        #hero { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cpath id='p' d='M50 0a50 50 0 100 100 50 50 0 000-100zm0 1a49 49 0 100 98 49 49 0 000-98z'/%3E%3C/defs%3E%3Cuse href='%23p' fill='%23D9006C' fill-opacity='0.05'/%3E%3Cg transform='translate(50 50) scale(0.8)'%3E%3Cuse href='%23p' fill='%23D9006C' fill-opacity='0.05'/%3E%3Cg transform='scale(0.8)'%3E%3Cuse href='%23p' fill='%23D9006C' fill-opacity='0.05'/%3E%3Cg transform='scale(0.8)'%3E%3Cuse href='%23p' fill='%23D9006C' fill-opacity='0.05'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        #about { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0L62.5 37.5 100 50 62.5 62.5 50 100 37.5 62.5 0 50 37.5 37.5z' fill='%23D9006C' fill-opacity='0.05'/%3E%3Cg transform='translate(50 50) rotate(45) scale(0.7)'%3E%3Cpath d='M50 0L62.5 37.5 100 50 62.5 62.5 50 100 37.5 62.5 0 50 37.5 37.5z' fill='%23D9006C' fill-opacity='0.05'/%3E%3C/g%3E%3C/svg%3E"); }
+        #experience { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23D9006C' fill-opacity='0.05'%3E%3Ccircle cx='50' cy='50' r='50'/%3E%3Ccircle cx='50' cy='50' r='40' fill='%23003D4C'/%3E%3Cpath d='M50 10a40 40 0 000 80V70a30 30 0 010-60z'/%3E%3Cpath d='M50 10a40 40 0 0134.6 20H59.3a30 30 0 00-25-15z' transform='rotate(60 50 50)'/%3E%3Cuse href='%23e' transform='rotate(120 50 50)'/%3E%3Cuse href='%23e' transform='rotate(180 50 50)'/%3E%3Cuse href='%23e' transform='rotate(240 50 50)'/%3E%3Cuse href='%23e' transform='rotate(300 50 50)'/%3E%3C/g%3E%3C/svg%3E"); }
+        #skills { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23D9006C' fill-opacity='0.05'%3E%3Cpath d='M0 0h50v50H0z'/%3E%3Cpath d='M50 50h50v50H50z'/%3E%3Cg transform='rotate(45 50 50)'%3E%3Cpath d='M25 25h50v50H25z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        #contact { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23D9006C' fill-opacity='0.05'%3E%3Cpath d='M50 0a50 50 0 00-50 50h10a40 40 0 0140-40z'/%3E%3Cg transform='rotate(90 50 50)'%3E%3Cpath d='M50 0a50 50 0 00-50 50h10a40 40 0 0140-40z'/%3E%3C/g%3E%3Cg transform='rotate(180 50 50)'%3E%3Cpath d='M50 0a50 50 0 00-50 50h10a40 40 0 0140-40z'/%3E%3C/g%3E%3Cg transform='rotate(270 50 50)'%3E%3Cpath d='M50 0a50 50 0 00-50 50h10a40 40 0 0140-40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+
+        .content-wrapper {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out 0.5s, transform 0.8s ease-out 0.5s;
+        }
+
+        .showcase-section.active .content-wrapper {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        .dot-nav {
             position: fixed;
-            right: 20px;
+            right: 2rem;
             top: 50%;
             transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
             z-index: 50;
         }
-        #dot-nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.25rem; }
-        .dot { display: block; width: 10px; height: 10px; background-color: rgba(76, 26, 26, 0.3); border-radius: 50%; transition: all 0.3s ease; position: relative; border: 1px solid transparent; }
-        .dot.active, .dot:hover { background-color: #E95420; transform: scale(1.8); border-color: #fdf8f0; }
-        .dot .tooltip { position: absolute; top: 50%; right: 150%; transform: translateY(-50%); background-color: #4C1A1A; color: #fdf8f0; padding: 4px 12px; border-radius: 6px; font-size: 0.875rem; white-space: nowrap; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
-        .dot:hover .tooltip { opacity: 1; visibility: visible; }
+        .dot-nav a {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(253, 245, 230, 0.3);
+            border: 1px solid var(--luminous-gold);
+            transition: all 0.3s ease;
+        }
+        .dot-nav a.active {
+            background-color: var(--luminous-gold);
+            transform: scale(1.4);
+            box-shadow: 0 0 10px var(--luminous-gold);
+        }
         
-        /* New Section Divider */
-        .section-divider {
-            text-align: center;
-            padding: 4rem 0;
-            margin: 0;
-        }
-        .section-divider svg {
-            width: 250px;
-            height: auto;
-            stroke-width: 0.5;
-            stroke: #E95420;
-            opacity: 0.7;
-        }
-
-        .deity-icon {
+        .scroll-hint {
             position: absolute;
             bottom: 2rem;
-            width: 80px;
-            height: 80px;
-            opacity: 0.1;
-            z-index: 1;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
-        @media (max-width: 768px) {
-            #dot-nav { display: none; }
-            .deity-icon { display: none; }
+        .btn-primary {
+            background: linear-gradient(45deg, var(--luminous-gold), var(--magenta));
+            color: var(--soft-ivory);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px rgba(217, 0, 108, 0.6);
+        }
+        
+        .content-card {
+            background: var(--card-bg);
+            border: 1px solid transparent;
+            border-image: linear-gradient(to bottom right, var(--luminous-gold), var(--magenta)) 1;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0,0,0, 0.37);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            padding-top: 3rem; 
         }
 
+        .lights {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 50px;
+            pointer-events: none;
+        }
+        .lights .light-bulb {
+            animation: glow 2s infinite alternate;
+        }
+        .lights .light-bulb:nth-child(2) { animation-delay: 0.4s; }
+        .lights .light-bulb:nth-child(3) { animation-delay: 0.8s; }
+        .lights .light-bulb:nth-child(4) { animation-delay: 1.2s; }
+        .lights .light-bulb:nth-child(5) { animation-delay: 1.6s; }
+
+        @keyframes glow {
+            from { fill-opacity: 0.4; }
+            to { fill-opacity: 1; }
+        }
+        
+        /* Vertical Timeline */
+        .timeline { position: relative; max-height: 50vh; overflow-y: auto; padding-right: 1rem; }
+        .timeline::-webkit-scrollbar { width: 4px; }
+        .timeline::-webkit-scrollbar-thumb { background: var(--luminous-gold); border-radius: 2px; }
+        .timeline::before {
+            content: ''; position: absolute; top: 10px; left: 9px; height: 95%; width: 2px;
+            background: linear-gradient(var(--bright-turquoise), var(--luminous-gold));
+        }
+        .timeline-item { position: relative; padding-left: 40px; margin-bottom: 1.5rem; }
+        .timeline-dot {
+            position: absolute; left: 0; top: 4px; height: 20px; width: 20px;
+            background: var(--luminous-gold); border-radius: 50%;
+            border: 4px solid var(--deep-teal);
+            box-shadow: 0 0 10px var(--luminous-gold);
+        }
+
+        /* Diya Animation */
+        .diya { width: 50px; height: 50px; filter: drop-shadow(0 0 5px var(--luminous-gold)); }
+        .diya-flame {
+            transform-origin: bottom;
+            animation: flicker 3s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+        @keyframes flicker {
+            0%, 100% { transform: scaleY(1) rotate(-2deg); opacity: 1; }
+            50% { transform: scaleY(0.95) rotate(2deg); opacity: 0.8; }
+        }
     </style>
 </head>
-<body>
-
-    <div id="preloader" class="fixed inset-0 bg-[#fdf8f0] flex items-center justify-center z-[100]">
-        <div id="preloader-text-1" class="font-diwali text-7xl md:text-8xl text-orange-600 opacity-0 preloader-text font-bold">नमस्ते 🙏</div>
-        <div id="preloader-text-2" class="font-diwali text-5xl md:text-6xl text-orange-600 opacity-0 absolute text-center preloader-text font-bold">आपको दशहरे की<br>हार्दिक शुभकामनाएँ</div>
+<body class="antialiased">
+    
+    <div id="preloader">
+        <h1 class="diwali-greeting">दिवाली की हार्दिक शुभकामनाएँ</h1>
     </div>
 
     <canvas id="fireworks-canvas"></canvas>
 
-    <nav id="dot-nav">
-        <ul>
-            <li><a href="#hero" class="dot active"><span class="tooltip">Home</span></a></li>
-            <li><a href="#about" class="dot"><span class="tooltip">About</span></a></li>
-            <li><a href="#skills" class="dot"><span class="tooltip">Skills</span></a></li>
-            <li><a href="#experience" class="dot"><span class="tooltip">Experience</span></a></li>
-            <li><a href="#certifications" class="dot"><span class="tooltip">Certifications</span></a></li>
-            <li><a href="#contact" class="dot"><span class="tooltip">Contact</span></a></li>
-        </ul>
+    <!-- Navigation -->
+    <nav class="dot-nav initially-hidden">
+        <a href="#hero" data-index="0" class="active"></a>
+        <a href="#about" data-index="1"></a>
+        <a href="#experience" data-index="2"></a>
+        <a href="#skills" data-index="3"></a>
+        <a href="#contact" data-index="4"></a>
     </nav>
     
-    <main class="relative z-10 opacity-0" style="transition: opacity 1.5s ease-in-out;">
-        <section id="hero" class="flex flex-col items-center justify-center text-center px-6 relative">
-             <!-- Ganesha Icon -->
-            <svg class="deity-icon left-4 md:left-1/4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#D4AF37"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 12H8V11C8 9.66 8.46 8.5 10.38 7.9C11.37 7.6 12 7.08 12 6.13V5.41C12 4.02 11.23 3.1 10.5 2.5C9.28 1.5 7.5 2.5 7.5 2.5M10.5 2.5C10.71 2.29 11.33 2.19 12 2.5C12.89 3 13.5 3.88 13.5 5.41V6.13C13.5 8.11 10.5 9 10.5 9M7.5 2.5S6.03 3.65 6.03 5.41V10.8C6.03 12.57 4.5 14 4.5 14H6V17.02C6 19.23 7.79 21 10 21C12.21 21 14 19.23 14 17.02V13.53C14 11.58 12.42 10 10.47 10H8M16 14C16 14 16.14 13.43 16.5 13.2C16.86 12.97 17.5 13.04 17.5 13.04C17.5 13.04 18.5 12.44 18.5 11.41C18.5 10.38 17.5 9.5 17.5 9.5C17.5 9.5 17.14 9.09 16.5 9.02C15.86 8.95 15.5 9.5 15.5 9.5L14 11.41M16 14L18 15.5M16 14H15L14 15.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-            <!-- Lakshmi Icon -->
-            <svg class="deity-icon right-4 md:right-1/4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#D4AF37"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15.5 13.5C15.5 13.5 16.34 14.36 17.18 14.36C18.02 14.36 19 13.5 19 13.5M19 13.5C19.84 12.66 20.32 10.55 19.5 9.5C18.68 8.45 17 8.5 17 8.5C17 8.5 16.16 8.45 15.5 9C14.84 9.55 14.5 11 14.5 12C14.5 13 15.5 13.5 15.5 13.5M19 13.5L21 12M15.5 13.5L14 15.5M8.5 13.5C8.5 13.5 7.66 14.36 6.82 14.36C5.98 14.36 5 13.5 5 13.5M5 13.5C4.16 12.66 3.68 10.55 4.5 9.5C5.32 8.45 7 8.5 7 8.5C7 8.5 7.84 8.45 8.5 9C9.16 9.55 9.5 11 9.5 12C9.5 13 8.5 13.5 8.5 13.5M5 13.5L3 12M8.5 13.5L10 15.5M12 21V13M12 13C10.5 13 9.78 11.23 10.5 9.5C11.22 7.77 12.78 7.77 13.5 9.5C14.22 11.23 13.5 13 12 13ZM12 13H11.5M12 13H12.5M12 3C12 3 11 4.5 11 6C11 7.5 12 9 12 9M12 3C12 3 13 4.5 13 6C13 7.5 12 9 12 9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-            <h1 class="text-5xl md:text-8xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 animate-gradient-text z-10">Pritish Rajpurohit</h1>
-            <p class="text-xl md:text-3xl text-gray-500 font-light mt-2 tracking-wide z-10">Full Stack Developer & AI/ML Engineer</p>
-        </section>
+    <!-- SVG Definitions for reuse -->
+    <svg style="display: none;">
+        <defs>
+            <g id="diya-svg">
+                <path fill="#FFC700" d="M2 20 C2 26, 18 26, 18 20 C18 14, 2 14, 2 20 Z"/>
+                <path class="diya-flame" fill="url(#flameGradient)" d="M10 15 C8 12, 12 12, 10 8 C10 4, 10 0, 10 0 C10 0, 10 4, 10 8 C12 12, 12 12, 10 15 Z"/>
+                <radialGradient id="flameGradient" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="#FFD700"/>
+                    <stop offset="100%" stop-color="#FF6F00"/>
+                </radialGradient>
+            </g>
+            <g id="lights-svg">
+                 <path d="M0 15 Q 50 30 100 15 T 200 15" stroke="rgba(253, 245, 230, 0.5)" stroke-width="2" fill="none"/>
+                <circle class="light-bulb" cx="20" cy="20" r="5" fill="var(--magenta)"/>
+                <circle class="light-bulb" cx="60" cy="25" r="5" fill="var(--luminous-gold)"/>
+                <circle class="light-bulb" cx="100" cy="27" r="5" fill="var(--bright-turquoise)"/>
+                <circle class="light-bulb" cx="140" cy="25" r="5" fill="var(--luminous-gold)"/>
+                <circle class="light-bulb" cx="180" cy="20" r="5" fill="var(--magenta)"/>
+            </g>
+        </defs>
+    </svg>
 
-        <div class="section-divider reveal">
-            <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 10 Q 10 2, 20 10 T 40 10 T 60 10 T 80 10 T 98 10" stroke-linecap="round" stroke-width="0.5" fill="none"/>
-                <path d="M25 10 L 75 10 M 50 2 L 50 18 M 45 14 L 50 19 L 55 14" stroke-linecap="round" stroke-width="0.5" fill="none" />
-            </svg>
-        </div>
-
-        <section id="about" class="flex flex-col justify-center reveal py-20">
-            <div class="container mx-auto px-6">
-                <h2 class="font-diwali text-5xl text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">🪔 मेरे बारे में (About Me) 🪔</h2>
-                <div class="max-w-4xl mx-auto p-8 md:p-12 content-box">
-                    <p class="text-lg leading-relaxed text-center">
-                        AI/ML Engineer with 2+ years of experience, specializing in Android Development, Firebase, and Cloud Computing (AWS, GCP). I'm a certified Google Business Intelligence professional, adept in database management and passionate about creating intuitive web applications. My project experience spans across diverse frameworks including Angular, Laravel, Django, Flask, and Flutter, allowing me to build robust and scalable solutions from the ground up. 🚀
-                    </p>
-                </div>
+    <!-- Main Content -->
+    <main class="showcase-container initially-hidden">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="showcase-section active">
+            <div class="content-wrapper text-center">
+                 <img src="https://placehold.co/150x150/003D4C/FDF5E6?text=PR" alt="Pritish Rajpurohit" class="rounded-full mx-auto mb-6 border-4 border-luminous-gold/50 shadow-lg shadow-luminous-gold/20">
+                <h1 class="text-6xl md:text-8xl font-bold text-soft-ivory">Pritish Rajpurohit</h1>
+                <p class="text-2xl md:text-4xl mt-4" style="color: var(--luminous-gold);">Senior Application Engineer</p>
+                <p class="text-lg md:text-2xl mt-2 text-gray-300">AI & ML Specialist</p>
+            </div>
+            <div class="scroll-hint">
+                <span class="text-sm">Scroll to Explore</span>
+                <i data-lucide="arrow-right" class="w-5 h-5"></i>
             </div>
         </section>
 
-        <div class="section-divider reveal">
-            <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 10 Q 10 2, 20 10 T 40 10 T 60 10 T 80 10 T 98 10" stroke-linecap="round" stroke-width="0.5" fill="none"/>
-                <path d="M25 10 L 75 10 M 50 2 L 50 18 M 45 14 L 50 19 L 55 14" stroke-linecap="round" stroke-width="0.5" fill="none" />
-            </svg>
-        </div>
-
-        <section id="skills" class="flex flex-col justify-center reveal py-20">
-            <div class="container mx-auto px-6">
-                <h2 class="font-diwali text-5xl text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">🏹 कौशल (My Skillset) 🏹</h2>
-                <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="skill-item p-6 text-center card-glow">
-                        <div class="icon mb-4">🧠</div>
-                        <h3 class="text-2xl font-semibold mb-2 text-gray-800">AI & Machine Learning</h3>
-                        <p class="text-gray-600 font-light">Django, Flask, Python, Scikit-learn</p>
+        <!-- About Section -->
+        <section id="about" class="showcase-section">
+            <div class="content-wrapper content-card p-12 text-center">
+                 <svg class="lights" viewBox="0 0 200 30"><use href="#lights-svg"/></svg>
+                <h2 class="section-title mb-6">
+                    <svg class="diya" viewBox="0 0 20 28"><use href="#diya-svg"/></svg>
+                    Namaste! 🙏
+                    <svg class="diya" viewBox="0 0 20 28" style="transform: scaleX(-1);"><use href="#diya-svg"/></svg>
+                </h2>
+                <p class="text-xl text-gray-300 leading-relaxed">
+                    I am an AI/ML Engineer with a passion for crafting intelligent applications. My experience spans the full stack, from cloud platforms like AWS & GCP to web frameworks like Angular and Django. I focus on turning data into meaningful solutions.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section id="experience" class="showcase-section">
+             <div class="content-wrapper content-card p-12">
+                 <svg class="lights" viewBox="0 0 200 30"><use href="#lights-svg"/></svg>
+                <h2 class="section-title mb-12 text-center">
+                    <svg class="diya" viewBox="0 0 20 28"><use href="#diya-svg"/></svg>
+                    Professional Journey 🚀
+                    <svg class="diya" viewBox="0 0 20 28" style="transform: scaleX(-1);"><use href="#diya-svg"/></svg>
+                </h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <p class="font-semibold text-sm" style="color: var(--magenta);">Oct 2025 - Present</p>
+                        <h3 class="text-2xl font-semibold mt-1">Senior Application Engineer</h3>
+                        <p class="text-gray-300">Bajaj Allianz General Insurance</p>
                     </div>
-                    <div class="skill-item p-6 text-center card-glow">
-                        <div class="icon mb-4">☁️</div>
-                        <h3 class="text-2xl font-semibold mb-2 text-gray-800">Cloud & DevOps</h3>
-                        <p class="text-gray-600 font-light">AWS, GCP, Firebase, CI/CD</p>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <p class="font-semibold text-sm" style="color: var(--magenta);">Jul 2024 - Sep 2025</p>
+                        <h3 class="text-2xl font-semibold mt-1">Application Engineer</h3>
+                        <p class="text-gray-300">Bajaj Allianz General Insurance</p>
                     </div>
-                    <div class="skill-item p-6 text-center card-glow">
-                        <div class="icon mb-4">📱</div>
-                        <h3 class="text-2xl font-semibold mb-2 text-gray-800">App Development</h3>
-                        <p class="text-gray-600 font-light">Android (Java/Kotlin), Flutter</p>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <p class="font-semibold text-sm" style="color: var(--magenta);">Feb 2024 - Jun 2024</p>
+                        <h3 class="text-2xl font-semibold mt-1">Internship Trainee</h3>
+                        <p class="text-gray-300">Tata Motors Limited, CVBU</p>
                     </div>
-                    <div class="skill-item p-6 text-center card-glow">
-                        <div class="icon mb-4">🕸️</div>
-                        <h3 class="text-2xl font-semibold mb-2 text-gray-800">Web Development</h3>
-                        <p class="text-gray-600 font-light">Angular, Laravel, HTML, CSS, JS</p>
-                    </div>
-                    <div class="skill-item p-6 text-center card-glow">
-                        <div class="icon mb-4">🗃️</div>
-                        <h3 class="text-2xl font-semibold mb-2 text-gray-800">Databases</h3>
-                        <p class="text-gray-600 font-light">SQL, MySQL, Database Management</p>
-                    </div>
-                    <div class="skill-item p-6 text-center card-glow">
-                        <div class="icon mb-4">📊</div>
-                        <h3 class="text-2xl font-semibold mb-2 text-gray-800">Business Intelligence</h3>
-                        <p class="text-gray-600 font-light">Google BI, Data Analysis, Reporting</p>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <p class="font-semibold text-sm" style="color: var(--magenta);">Feb 2023 - Apr 2023</p>
+                        <h3 class="text-2xl font-semibold mt-1">UI/UX Internship</h3>
+                        <p class="text-gray-300">Imaginext Tech Solutions</p>
                     </div>
                 </div>
             </div>
         </section>
         
-        <div class="section-divider reveal">
-            <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 10 Q 10 2, 20 10 T 40 10 T 60 10 T 80 10 T 98 10" stroke-linecap="round" stroke-width="0.5" fill="none"/>
-                <path d="M25 10 L 75 10 M 50 2 L 50 18 M 45 14 L 50 19 L 55 14" stroke-linecap="round" stroke-width="0.5" fill="none" />
-            </svg>
-        </div>
-
-        <section id="experience" class="flex flex-col justify-center reveal py-20">
-            <div class="container mx-auto px-6">
-                <h2 class="font-diwali text-5xl text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">🪔 व्यावसायिक यात्रा (Professional Journey) 🪔</h2>
-                <div class="relative max-w-2xl mx-auto timeline space-y-8">
-                    <div class="timeline-item reveal"><div class="p-6 rounded-lg card-glow current-job"><h3 class="text-xl font-semibold text-gray-800">Senior Application Engineer</h3><p class="text-md font-semibold mb-2 text-orange-600">Bajaj Allianz General Insurance Co.</p><p class="text-sm mb-2 opacity-80">Jul 2025 - Present</p><p class="font-light text-gray-600">Leading feature development, mentoring junior engineers, and optimizing application performance.</p></div></div>
-                    <div class="timeline-item reveal"><div class="p-6 rounded-lg card-glow"><h3 class="text-xl font-semibold text-gray-800">Application Engineer</h3><p class="text-md font-semibold mb-2 text-orange-600">Bajaj Allianz General Insurance Co.</p><p class="text-sm mb-2 opacity-80">Jul 2024 - Jul 2025</p><p class="font-light text-gray-600">Solving real-time application issues and developing robust features across the stack.</p></div></div>
-                    <div class="timeline-item reveal"><div class="p-6 rounded-lg card-glow"><h3 class="text-xl font-semibold text-gray-800">Internship Trainee</h3><p class="text-md font-semibold mb-2 text-orange-600">Tata Motors Limited, CVBU</p><p class="text-sm mb-2 opacity-80">Feb 2024 - Jun 2024</p><p class="font-light text-gray-600">Engaged in live projects focusing on database optimization, UI/UX design, and QA testing.</p></div></div>
-                    <div class="timeline-item reveal"><div class="p-6 rounded-lg card-glow"><h3 class="text-xl font-semibold text-gray-800">UI/UX Internship</h3><p class="text-md font-semibold mb-2 text-orange-600">Imaginext Tech Solutions, Ltd.</p><p class="text-sm mb-2 opacity-80">Feb 2023 - Apr 2023</p><p class="font-light text-gray-600">Created a complete academic web app using Angular and Laravel.</p></div></div>
+        <!-- Skills & Credentials Section -->
+        <section id="skills" class="showcase-section">
+            <div class="content-wrapper content-card p-12">
+                <svg class="lights" viewBox="0 0 200 30"><use href="#lights-svg"/></svg>
+                <h2 class="section-title mb-12 text-center">
+                    <svg class="diya" viewBox="0 0 20 28"><use href="#diya-svg"/></svg>
+                    Craft & Knowledge 🛠️
+                    <svg class="diya" viewBox="0 0 20 28" style="transform: scaleX(-1);"><use href="#diya-svg"/></svg>
+                </h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-3xl font-semibold text-center text-soft-ivory mb-8">My Toolkit</h3>
+                         <div class="flex flex-wrap gap-4 justify-center">
+                            <span class="bg-magenta/20 text-soft-ivory text-lg px-5 py-2 rounded-full">🧨 Generative AI</span>
+                            <span class="bg-magenta/20 text-soft-ivory text-lg px-5 py-2 rounded-full">🧨 Machine Learning</span>
+                            <span class="bg-magenta/20 text-soft-ivory text-lg px-5 py-2 rounded-full">🧨 AWS & GCP</span>
+                            <span class="bg-magenta/20 text-soft-ivory text-lg px-5 py-2 rounded-full">🧨 Android</span>
+                            <span class="bg-magenta/20 text-soft-ivory text-lg px-5 py-2 rounded-full">🧨 Firebase</span>
+                            <span class="bg-magenta/20 text-soft-ivory text-lg px-5 py-2 rounded-full">🧨 Angular & Django</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-semibold text-center text-soft-ivory mb-8">Credentials</h3>
+                        <ul class="space-y-4 text-gray-300 text-lg">
+                            <li class="flex items-center gap-3"><i data-lucide="award" class="w-6 h-6 text-luminous-gold flex-shrink-0"></i> Google Business Intelligence</li>
+                            <li class="flex items-center gap-3"><i data-lucide="award" class="w-6 h-6 text-luminous-gold flex-shrink-0"></i> Google Cloud Certified</li>
+                            <li class="flex items-center gap-3"><i data-lucide="award" class="w-6 h-6 text-luminous-gold flex-shrink-0"></i> Generative AI Fundamentals</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <div class="section-divider reveal">
-            <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 10 Q 10 2, 20 10 T 40 10 T 60 10 T 80 10 T 98 10" stroke-linecap="round" stroke-width="0.5" fill="none"/>
-                <path d="M25 10 L 75 10 M 50 2 L 50 18 M 45 14 L 50 19 L 55 14" stroke-linecap="round" stroke-width="0.5" fill="none" />
-            </svg>
-        </div>
-
-        <section id="certifications" class="flex flex-col justify-center reveal py-20">
-             <div class="container mx-auto px-6">
-                <h2 class="font-diwali text-5xl text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">🏆 प्रमाणपत्र (Certifications) 🏆</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-3xl cert-emoji-animate">🏅</span><div><h4 class="font-semibold text-gray-800">Google Business Intelligence</h4><p class="text-sm text-gray-500 font-light">Coursera</p></div></div>
-                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-3xl cert-emoji-animate">🏅</span><div><h4 class="font-semibold text-gray-800">CCAI Insights</h4><p class="text-sm text-gray-500 font-light">Google Cloud</p></div></div>
-                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-3xl cert-emoji-animate">🏅</span><div><h4 class="font-semibold text-gray-800">ML Image Classifier</h4><p class="text-sm text-gray-500 font-light">Coursera</p></div></div>
-                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-3xl cert-emoji-animate">🏅</span><div><h4 class="font-semibold text-gray-800">Generative AI Fundamentals</h4><p class="text-sm text-gray-500 font-light">Google Cloud</p></div></div>
-                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-3xl cert-emoji-animate">🏅</span><div><h4 class="font-semibold text-gray-800">Google Cloud Foundations</h4><p class="text-sm text-gray-500 font-light">Google Cloud</p></div></div>
-                    <div class="group p-5 rounded-lg flex items-center space-x-4 card-glow"><span class="text-3xl cert-emoji-animate">🏅</span><div><h4 class="font-semibold text-gray-800">SQL (Advanced)</h4><p class="text-sm text-gray-500 font-light">HackerRank</p></div></div>
-                </div>
+        <!-- Contact Section -->
+        <section id="contact" class="showcase-section">
+             <div class="content-wrapper text-center">
+                <h2 class="section-title text-5xl">
+                    <svg class="diya" viewBox="0 0 20 28"><use href="#diya-svg"/></svg>
+                    Let's Connect ✨
+                    <svg class="diya" viewBox="0 0 20 28" style="transform: scaleX(-1);"><use href="#diya-svg"/></svg>
+                </h2>
+                <p class="text-xl text-gray-300 my-8 max-w-xl mx-auto">I'm always open to new collaborations and exciting projects. Feel free to reach out!</p>
+                <a href="mailto:pritish.rajpurohit@outlook.com" class="btn-primary inline-block py-4 px-12 text-xl">Send an Email</a>
             </div>
         </section>
-        
-        <div class="section-divider reveal">
-            <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 10 Q 10 2, 20 10 T 40 10 T 60 10 T 80 10 T 98 10" stroke-linecap="round" stroke-width="0.5" fill="none"/>
-                <path d="M25 10 L 75 10 M 50 2 L 50 18 M 45 14 L 50 19 L 55 14" stroke-linecap="round" stroke-width="0.5" fill="none" />
-            </svg>
-        </div>
-
-        <section id="contact" class="flex flex-col justify-center text-center reveal py-20">
-            <div class="container mx-auto px-6">
-                <h2 class="font-diwali text-5xl mb-10 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-orange-500 to-red-500">📨 संपर्क करें (Get In Touch) 📨</h2>
-                 <p class="max-w-2xl mx-auto mb-10 text-lg font-light opacity-90 text-gray-600">I'm always open to new opportunities and collaborations. Let's create something amazing together!</p>
-                 <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-8 text-lg">
-                    <a href="mailto:pritish.rajpurohit@outlook.com" class="font-semibold contact-link">📧 Email Me</a>
-                    <a href="https://smashcoder.github.io" target="_blank" class="font-semibold contact-link">🔗 My Work</a>
-                 </div>
-                 <p class="mt-10 opacity-80 text-gray-500">📞 (+91) 86059-88403 | 📍 Pune, Maharashtra</p>
-            </div>
-        </section>
-
     </main>
 
-    <footer class="bg-white text-center py-4 border-t border-gray-200 fixed bottom-0 w-full z-20">
-        <p class="font-diwali text-lg text-orange-600">विजयादशमी की हार्दिक शुभकामनाएँ! 🏹</p>
-        <p class="text-gray-600 mt-1 text-sm">&copy; <span id="current-year">2025</span> Pritish Rajpurohit. Crafted with ❤️ and 🪔.</p>
-    </footer>
-
     <script>
-        // --- Preloader Animation ---
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            const text1 = document.getElementById('preloader-text-1');
-            const text2 = document.getElementById('preloader-text-2');
-            const mainContent = document.querySelector('main');
+        lucide.createIcons();
 
-            setTimeout(() => {
-                text1.style.animationName = 'fadeInScale';
-            }, 100);
+        const sections = document.querySelectorAll('.showcase-section');
+        const navLinks = document.querySelectorAll('.dot-nav a');
+        const mainContainer = document.querySelector('.showcase-container');
+        let currentSection = 0;
+        let isWheeling = false;
 
-            setTimeout(() => {
-                text1.style.display = 'none';
-                text2.style.animationName = 'fadeInScale';
-            }, 1500); // Shortened from 3100ms
-
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                mainContent.style.opacity = '1';
-                createFireworkBurst(); // Trigger a special firework burst
-            }, 3000); // Shortened from 6100ms
+        function navigateToSection(index) {
+            if (index < 0 || index >= sections.length) return;
             
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 4000); // Shortened from 7100ms
-        });
+            mainContainer.style.transform = `translateX(-${index * 100}vw)`;
+            
+            sections.forEach(sec => sec.classList.remove('active'));
+            sections[index].classList.add('active');
+            
+            navLinks.forEach(link => link.classList.remove('active'));
+            navLinks[index].classList.add('active');
 
-        // --- Smooth Scrolling for anchor links ---
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            currentSection = index;
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                const index = parseInt(e.target.dataset.index);
+                navigateToSection(index);
             });
         });
 
-        // --- Scroll Reveal ---
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-        revealElements.forEach(el => { revealObserver.observe(el); });
+        window.addEventListener('wheel', (e) => {
+            if (isWheeling) return;
+            isWheeling = true;
 
-        // --- Dot Nav Active State on scroll ---
-        const sections = document.querySelectorAll('section[id]');
-        const navDots = document.querySelectorAll('#dot-nav a');
-
-        const navObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navDots.forEach(dot => {
-                        dot.classList.remove('active');
-                        if (dot.getAttribute('href').substring(1) === entry.target.id) {
-                            dot.classList.add('active');
-                        }
-                    });
-                }
-            });
-        }, { rootMargin: '-50% 0px -50% 0px' });
-        sections.forEach(section => { navObserver.observe(section); });
-
-
-        // --- Firecracker Bursting Animation ---
+            if (e.deltaY > 0) { // Scrolling down/right
+                navigateToSection(currentSection + 1);
+            } else { // Scrolling up/left
+                navigateToSection(currentSection - 1);
+            }
+            
+            setTimeout(() => { isWheeling = false; }, 1200); // Cooldown to prevent rapid scrolling
+        });
+        
+        // Fireworks script
         const canvas = document.getElementById('fireworks-canvas');
         const ctx = canvas.getContext('2d');
         let fireworks = [];
         let particles = [];
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        const fireworkColors = [ '#FFD700', '#D9006C', '#00C9A7' ];
+        function setupCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        setupCanvas();
+        function Firework(sx, sy, tx, ty) { this.x=sx;this.y=sy;this.sx=sx;this.sy=sy;this.tx=tx;this.ty=ty; this.distanceToTarget=Math.sqrt(Math.pow(tx-sx,2)+Math.pow(ty-sy,2)); this.distanceTraveled=0; this.coordinates=Array(3).fill([this.x,this.y]); this.angle=Math.atan2(ty-sy,tx-sx); this.speed=2; this.acceleration=1.03; this.brightness=Math.random()*30+70; this.color = fireworkColors[Math.floor(Math.random() * fireworkColors.length)]; }
+        Firework.prototype.update=function(index){this.coordinates.pop();this.coordinates.unshift([this.x,this.y]);this.speed*=this.acceleration;let vx=Math.cos(this.angle)*this.speed;let vy=Math.sin(this.angle)*this.speed;this.distanceTraveled=Math.sqrt(Math.pow(this.x-this.sx,2)+Math.pow(this.y-this.sy,2));if(this.distanceTraveled>=this.distanceToTarget){createParticles(this.tx,this.ty,this.color);fireworks.splice(index,1)}else{this.x+=vx;this.y+=vy}};
+        Firework.prototype.draw=function(){ctx.beginPath();ctx.moveTo(this.coordinates[this.coordinates.length-1][0],this.coordinates[this.coordinates.length-1][1]);ctx.lineTo(this.x,this.y);ctx.lineWidth=2;ctx.strokeStyle=this.color;ctx.stroke()};
+        function Particle(x, y, color) { this.x=x;this.y=y;this.coordinates=Array(5).fill([this.x,this.y]); this.angle=Math.random()*Math.PI*2; this.speed=Math.random()*8+1; this.friction=0.97; this.gravity=1; this.color=color; this.alpha=1; this.decay=Math.random()*0.02+0.015; }
+        Particle.prototype.update=function(index){this.coordinates.pop();this.coordinates.unshift([this.x,this.y]);this.speed*=this.friction;this.x+=Math.cos(this.angle)*this.speed;this.y+=Math.sin(this.angle)*this.speed+this.gravity;this.alpha-=this.decay;if(this.alpha<=this.decay)particles.splice(index,1)};
+        Particle.prototype.draw=function(){ctx.beginPath();ctx.moveTo(this.coordinates[this.coordinates.length-1][0],this.coordinates[this.coordinates.length-1][1]);ctx.lineTo(this.x,this.y);ctx.lineWidth=2;ctx.strokeStyle=`hsla(${hexToHsl(this.color).h}, ${hexToHsl(this.color).s}%, ${hexToHsl(this.color).l}%, ${this.alpha})`;ctx.stroke()};
+        function createParticles(x,y,color){let p=60;while(p--)particles.push(new Particle(x,y,color))}
+        function loop(){requestAnimationFrame(loop);ctx.globalCompositeOperation='destination-out';ctx.fillStyle='rgba(0, 25, 32, 0.2)';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.globalCompositeOperation='lighter';fireworks.forEach((f,i)=>f.update(i));particles.forEach((p,i)=>p.update(i));fireworks.forEach(f=>f.draw());particles.forEach(p=>p.draw());if(Math.random()<0.02){let sx=Math.random()*canvas.width;let sy=canvas.height;let tx=Math.random()*canvas.width;let ty=Math.random()*canvas.height/2;fireworks.push(new Firework(sx,sy,tx,ty))}}
+        function hexToHsl(H) {let r=0,g=0,b=0;if(H.length==4){r="0x"+H[1]+H[1];g="0x"+H[2]+H[2];b="0x"+H[3]+H[3]}else if(H.length==7){r="0x"+H[1]+H[2];g="0x"+H[3]+H[4];b="0x"+H[5]+H[6]} r/=255;g/=255;b/=255;let cmin=Math.min(r,g,b),cmax=Math.max(r,g,b),delta=cmax-cmin,h=0,s=0,l=0;if(delta==0)h=0;else if(cmax==r)h=((g-b)/delta)%6;else if(cmax==g)h=(b-r)/delta+2;else h=(r-g)/delta+4; h=Math.round(h*60);if(h<0)h+=360; l=(cmax+cmin)/2;s=delta==0?0:delta/(1-Math.abs(2*l-1));s=+(s*100).toFixed(1);l=+(l*100).toFixed(1); return {h,s,l}; }
         
-        function Firework(sx, sy, tx, ty) {
-            this.x = sx; this.y = sy;
-            this.sx = sx; this.sy = sy;
-            this.tx = tx; this.ty = ty;
-            this.distanceToTarget = Math.sqrt(Math.pow(tx - sx, 2) + Math.pow(ty - sy, 2));
-            this.distanceTraveled = 0;
-            this.coordinates = [];
-            this.coordinateCount = 3;
-            while(this.coordinateCount--) { this.coordinates.push([this.x, this.y]); }
-            this.angle = Math.atan2(ty - sy, tx - sx);
-            this.speed = 2;
-            this.acceleration = 1.05;
-            this.brightness = Math.random() * 20 + 50;
-        }
+        window.addEventListener('resize', setupCanvas);
+        
+        window.onload = () => {
+            const preloader = document.getElementById('preloader');
+            const mainContent = document.querySelector('.showcase-container');
+            const nav = document.querySelector('.dot-nav');
 
-        Firework.prototype.update = function(index) {
-            this.coordinates.pop();
-            this.coordinates.unshift([this.x, this.y]);
-            this.speed *= this.acceleration;
-            let vx = Math.cos(this.angle) * this.speed;
-            let vy = Math.sin(this.angle) * this.speed;
-            this.distanceTraveled = Math.sqrt(Math.pow(this.x - this.sx, 2) + Math.pow(this.y - this.sy, 2));
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+                
+                mainContent.classList.remove('initially-hidden');
+                mainContent.classList.add('visible');
+                
+                nav.classList.remove('initially-hidden');
+                nav.classList.add('visible');
 
-            if (this.distanceTraveled >= this.distanceToTarget) {
-                createParticles(this.tx, this.ty);
-                fireworks.splice(index, 1);
-            } else {
-                this.x += vx;
-                this.y += vy;
-            }
-        };
-
-        Firework.prototype.draw = function() {
-            ctx.beginPath();
-            ctx.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates[this.coordinates.length - 1][1]);
-            ctx.lineTo(this.x, this.y);
-            ctx.strokeStyle = `hsl(${Math.random() * 60}, 100%, ${this.brightness}%)`;
-            ctx.stroke();
-        };
-
-        function Particle(x, y) {
-            this.x = x; this.y = y;
-            this.coordinates = [];
-            this.coordinateCount = 5;
-            while(this.coordinateCount--) { this.coordinates.push([this.x, this.y]); }
-            this.angle = Math.random() * Math.PI * 2;
-            this.speed = Math.random() * 10 + 1;
-            this.friction = 0.95;
-            this.gravity = 1;
-            this.hue = Math.random() * 60; // Restrict hue to reds, oranges, and yellows
-            this.brightness = Math.random() * 30 + 50;
-            this.alpha = 1;
-            this.decay = Math.random() * 0.03 + 0.015;
-        }
-
-        Particle.prototype.update = function(index) {
-            this.coordinates.pop();
-            this.coordinates.unshift([this.x, this.y]);
-            this.speed *= this.friction;
-            this.x += Math.cos(this.angle) * this.speed;
-            this.y += Math.sin(this.angle) * this.speed + this.gravity;
-            this.alpha -= this.decay;
-            if (this.alpha <= this.decay) { particles.splice(index, 1); }
-        };
-
-        Particle.prototype.draw = function() {
-            ctx.beginPath();
-            ctx.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates[this.coordinates.length - 1][1]);
-            ctx.lineTo(this.x, this.y);
-            ctx.strokeStyle = `hsla(${this.hue}, 100%, ${this.brightness}%, ${this.alpha})`;
-            ctx.stroke();
-        };
-
-        function createParticles(x, y) {
-            let particleCount = 30;
-            while(particleCount--) { particles.push(new Particle(x, y)); }
-        }
-
-        function createFireworkBurst() {
-            let burstCount = 7;
-            for (let i = 0; i < burstCount; i++) {
-                let sx = (canvas.width / (burstCount + 1)) * (i + 1);
-                let sy = canvas.height;
-                let tx = Math.random() * canvas.width;
-                let ty = Math.random() * canvas.height / 2;
                 setTimeout(() => {
-                    fireworks.push(new Firework(sx, sy, tx, ty));
-                }, i * 100); // Stagger the launch slightly
-            }
-        }
+                    preloader.style.display = 'none';
+                }, 1000); 
+            }, 3000); // Show preloader for 3 seconds
 
-        function loop() {
-            requestAnimationFrame(loop);
-            ctx.globalCompositeOperation = 'destination-out';
-            ctx.fillStyle = 'rgba(253, 248, 240, 0.15)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.globalCompositeOperation = 'lighter';
-
-            for (let i = fireworks.length - 1; i >= 0; i--) { fireworks[i].draw(); fireworks[i].update(i); }
-            for (let i = particles.length - 1; i >= 0; i--) { particles[i].draw(); particles[i].update(i); }
-        }
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-        setInterval(() => {
-            if (document.getElementById('preloader')?.style.display === 'none') {
-                let sx = canvas.width / 2;
-                let sy = canvas.height;
-                let tx = Math.random() * canvas.width;
-                let ty = Math.random() * canvas.height / 2;
-                fireworks.push(new Firework(sx, sy, tx, ty));
-            }
-        }, 1500);
-
-        // Only start the fireworks loop after the preloader is done
-        setTimeout(() => {
-            loop();
-        }, 3000); // Match the preloader fadeout
-
-        // Set dynamic year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+            loop(); // Start fireworks animation
+        };
     </script>
 
     <script src="assets/js/rvp-script.js"></script>
