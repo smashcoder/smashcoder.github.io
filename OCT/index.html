@@ -92,10 +92,9 @@
             align-items: center;
         }
 
-        /* Card styles for experience and skills */
+        /* Card styles for experience and skills (Optimized for performance) */
         .content-card {
-            background-color: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.85); /* Increased opacity, removed blur */
             border: 1px solid rgba(106, 13, 173, 0.2);
             border-radius: 1rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -135,9 +134,21 @@
             -webkit-text-fill-color: transparent;
         }
 
+        /* Mobile Navigation */
+        #mobile-nav a {
+            color: #4A3F6D;
+            transition: color 0.3s ease;
+        }
+        #mobile-nav a.active {
+            color: #6A0DAD; /* royal-purple */
+        }
+        .shadow-t-lg { /* Custom shadow for top */
+            box-shadow: 0 -4px 6px -1px rgb(0 0 0 / 0.1), 0 -2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body class="overflow-x-hidden pb-20 md:pb-0">
     
     <!-- Splash Screen -->
     <div id="splash-screen">
@@ -435,6 +446,41 @@
         </div>
     </footer>
 
+    <!-- Mobile Bottom Navigation -->
+    <nav id="mobile-nav" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-sm shadow-t-lg p-2 flex justify-around md:hidden z-50">
+        <a href="#home" data-section="home" class="flex flex-col items-center justify-center text-xs p-1 w-1/5 active">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+            <span class="truncate">Home</span>
+        </a>
+        <a href="#experience" data-section="experience" class="flex flex-col items-center justify-center text-xs p-1 w-1/5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span class="truncate">Experience</span>
+        </a>
+        <a href="#skills" data-section="skills" class="flex flex-col items-center justify-center text-xs p-1 w-1/5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 011-1h1a2 2 0 100-4H7a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+            </svg>
+            <span class="truncate">Skills</span>
+        </a>
+        <a href="#certifications" data-section="certifications" class="flex flex-col items-center justify-center text-xs p-1 w-1/5">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+            </svg>
+            <span class="truncate">Certs</span>
+        </a>
+        <a href="#contact" data-section="contact" class="flex flex-col items-center justify-center text-xs p-1 w-1/5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span class="truncate">Contact</span>
+        </a>
+    </nav>
+
+
     <script>
         // --- SPLASH SCREEN LOGIC ---
         window.addEventListener('load', () => {
@@ -454,9 +500,10 @@
         });
 
 
-        // --- DOT NAVIGATION LOGIC ---
+        // --- DOT & MOBILE NAVIGATION LOGIC ---
         const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.dot-nav a');
+        const dotNavLinks = document.querySelectorAll('.dot-nav a');
+        const mobileNavLinks = document.querySelectorAll('#mobile-nav a');
 
         const observerOptions = {
             root: null,
@@ -468,7 +515,17 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const id = entry.target.getAttribute('id');
-                    navLinks.forEach(link => {
+                    
+                    // Update dot nav
+                    dotNavLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('data-section') === id) {
+                            link.classList.add('active');
+                        }
+                    });
+
+                    // Update mobile nav
+                    mobileNavLinks.forEach(link => {
                         link.classList.remove('active');
                         if (link.getAttribute('data-section') === id) {
                             link.classList.add('active');
@@ -482,7 +539,7 @@
             observer.observe(section);
         });
 
-        // --- FIREWORKS ANIMATION LOGIC ---
+        // --- FIREWORKS ANIMATION LOGIC (OPTIMIZED) ---
         const canvas = document.getElementById('fireworks-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
@@ -490,7 +547,7 @@
 
         let fireworks = [];
         let particles = [];
-        const colors = ['#FF8C00', '#DAA520', '#6A0DAD', '#FF5733', '#FFFFFF', '#C8A2C8', '#FFC300']; // New multicolor palette
+        const colors = ['#FF8C00', '#DAA520', '#6A0DAD', '#FF5733', '#FFFFFF', '#C8A2C8', '#FFC300'];
 
         function Firework(sx, sy, tx, ty) {
             this.x = sx;
@@ -527,7 +584,7 @@
             ctx.beginPath();
             ctx.moveTo(this.x, this.y);
             ctx.lineTo(this.x - Math.cos(this.angle) * 10, this.y - Math.sin(this.angle) * 10);
-            ctx.strokeStyle = `hsl(${Math.random() * 360}, 100%, ${this.brightness}%)`; // Full spectrum of colors
+            ctx.strokeStyle = `hsl(${Math.random() * 360}, 100%, ${this.brightness}%)`;
             ctx.stroke();
         };
 
@@ -564,14 +621,14 @@
         };
 
         function createParticles(x, y) {
-            let particleCount = 100;
+            let particleCount = 80; // Reduced particle count
             while (particleCount--) {
                 particles.push(new Particle(x, y));
             }
         }
 
         function launchFirework() {
-            if (fireworks.length < 10) { // Limit number of on-screen fireworks
+            if (fireworks.length < 8) { // Reduced max fireworks
                 let startX = canvas.width / 2;
                 let startY = canvas.height;
                 let targetX = Math.random() * canvas.width;
@@ -580,11 +637,11 @@
             }
         }
         
-        let launchInterval = setInterval(launchFirework, 1000);
+        let launchInterval = setInterval(launchFirework, 1500); // Increased interval
 
         function animate() {
             requestAnimationFrame(animate);
-            ctx.fillStyle = 'rgba(249, 246, 255, 0.1)'; // Fading trail effect for light background
+            ctx.fillStyle = 'rgba(249, 246, 255, 0.1)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             let i = fireworks.length;
@@ -607,9 +664,7 @@
 
         animate();
     </script>
-
-    <script src="/assets/js/rvp-script.js"></script>
-
+<script src="/assets/js/rvp-script.js"></script>
 
 </body>
 </html>
