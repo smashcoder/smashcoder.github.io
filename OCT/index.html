@@ -3,490 +3,613 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pritish Rajpurohit - Portfolio</title>
+    <title>Pritish Rajpurohit | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            /* "Peacock" Palette */
-            --deep-teal: #003D4C;
-            --luminous-gold: #FFD700;
-            --magenta: #D9006C;
-            --bright-turquoise: #00C9A7;
-            --soft-ivory: #FDF5E6;
-            --card-bg: rgba(0, 25, 32, 0.2);
-        }
-
-        html, body { 
-            overflow: hidden; /* Prevent vertical scroll */
-            height: 100%;
-        }
-
+        /* Custom styles for the Diwali theme - Light Purple, Orange & Gold */
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--deep-teal);
-            color: var(--soft-ivory);
+            font-family: 'Lato', sans-serif;
+            background-color: #F9F6FF; /* Very light lavender */
+            color: #4A3F6D; /* Dark Slate Purple */
+            scroll-behavior: smooth;
         }
-
-        #fireworks-canvas {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; mix-blend-mode: screen; opacity: 0.7;
-        }
-
         h1, h2, h3 {
             font-family: 'Playfair Display', serif;
         }
-        
-        /* Preloader Styles */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--deep-teal);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 1s ease-in-out;
-        }
-        .diwali-greeting {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 10vw, 5rem);
-            color: var(--luminous-gold);
-            text-shadow: 0 0 25px var(--luminous-gold);
-            animation: preloader-pulse 2s infinite;
-            text-align: center;
-            padding: 1rem;
-        }
-        @keyframes preloader-pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        #preloader.fade-out {
-            opacity: 0;
-        }
+        .royal-purple { color: #6A0DAD; }
+        .rich-gold { color: #DAA520; } /* GoldenRod for better readability */
+        .festive-orange { color: #FF8C00; }
+        .light-lilac { color: #C8A2C8; }
+        .bg-royal-purple { background-color: #6A0DAD; }
+        .bg-rich-gold { background-color: #DAA520; }
+        .bg-festive-orange { background-color: #FF8C00; }
+        .border-rich-gold { border-color: #DAA520; }
 
-        .initially-hidden {
-            opacity: 0;
-        }
-        .visible {
-            opacity: 1;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .section-title { 
-            color: var(--luminous-gold); 
-            font-weight: 700;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        /* Main horizontal container */
-        .showcase-container {
-            display: flex;
-            width: 500%; /* 100% for each of the 5 sections */
-            height: 100vh;
-            transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
-        }
-
-        .showcase-section {
-            width: 100vw;
-            height: 100vh;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            position: relative;
-            background-size: 80vmin 80vmin;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        
-        #hero { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cpath id='p' d='M50 0a50 50 0 100 100 50 50 0 000-100zm0 1a49 49 0 100 98 49 49 0 000-98z'/%3E%3C/defs%3E%3Cuse href='%23p' fill='%23D9006C' fill-opacity='0.05'/%3E%3Cg transform='translate(50 50) scale(0.8)'%3E%3Cuse href='%23p' fill='%23D9006C' fill-opacity='0.05'/%3E%3Cg transform='scale(0.8)'%3E%3Cuse href='%23p' fill='%23D9006C' fill-opacity='0.05'/%3E%3Cg transform='scale(0.8)'%3E%3Cuse href='%23p' fill='%23D9006C' fill-opacity='0.05'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-        #about { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0L62.5 37.5 100 50 62.5 62.5 50 100 37.5 62.5 0 50 37.5 37.5z' fill='%23D9006C' fill-opacity='0.05'/%3E%3Cg transform='translate(50 50) rotate(45) scale(0.7)'%3E%3Cpath d='M50 0L62.5 37.5 100 50 62.5 62.5 50 100 37.5 62.5 0 50 37.5 37.5z' fill='%23D9006C' fill-opacity='0.05'/%3E%3C/g%3E%3C/svg%3E"); }
-        #experience { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23D9006C' fill-opacity='0.05'%3E%3Ccircle cx='50' cy='50' r='50'/%3E%3Ccircle cx='50' cy='50' r='40' fill='%23003D4C'/%3E%3Cpath d='M50 10a40 40 0 000 80V70a30 30 0 010-60z'/%3E%3Cpath d='M50 10a40 40 0 0134.6 20H59.3a30 30 0 00-25-15z' transform='rotate(60 50 50)'/%3E%3Cuse href='%23e' transform='rotate(120 50 50)'/%3E%3Cuse href='%23e' transform='rotate(180 50 50)'/%3E%3Cuse href='%23e' transform='rotate(240 50 50)'/%3E%3Cuse href='%23e' transform='rotate(300 50 50)'/%3E%3C/g%3E%3C/svg%3E"); }
-        #skills { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23D9006C' fill-opacity='0.05'%3E%3Cpath d='M0 0h50v50H0z'/%3E%3Cpath d='M50 50h50v50H50z'/%3E%3Cg transform='rotate(45 50 50)'%3E%3Cpath d='M25 25h50v50H25z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-        #contact { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23D9006C' fill-opacity='0.05'%3E%3Cpath d='M50 0a50 50 0 00-50 50h10a40 40 0 0140-40z'/%3E%3Cg transform='rotate(90 50 50)'%3E%3Cpath d='M50 0a50 50 0 00-50 50h10a40 40 0 0140-40z'/%3E%3C/g%3E%3Cg transform='rotate(180 50 50)'%3E%3Cpath d='M50 0a50 50 0 00-50 50h10a40 40 0 0140-40z'/%3E%3C/g%3E%3Cg transform='rotate(270 50 50)'%3E%3Cpath d='M50 0a50 50 0 00-50 50h10a40 40 0 0140-40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-
-        .content-wrapper {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out 0.5s, transform 0.8s ease-out 0.5s;
-        }
-
-        .showcase-section.active .content-wrapper {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Navigation */
+        /* Dot navigation styles */
         .dot-nav {
             position: fixed;
-            right: 2rem;
+            right: 20px;
             top: 50%;
             transform: translateY(-50%);
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.25rem; /* 20px */
             z-index: 50;
         }
         .dot-nav a {
             width: 12px;
             height: 12px;
+            background-color: rgba(106, 13, 173, 0.3);
             border-radius: 50%;
-            background-color: rgba(253, 245, 230, 0.3);
-            border: 1px solid var(--luminous-gold);
             transition: all 0.3s ease;
-        }
-        .dot-nav a.active {
-            background-color: var(--luminous-gold);
-            transform: scale(1.4);
-            box-shadow: 0 0 10px var(--luminous-gold);
-        }
-        
-        .scroll-hint {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, var(--luminous-gold), var(--magenta));
-            color: var(--soft-ivory);
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
-        }
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 35px rgba(217, 0, 108, 0.6);
-        }
-        
-        .content-card {
-            background: var(--card-bg);
-            border: 1px solid transparent;
-            border-image: linear-gradient(to bottom right, var(--luminous-gold), var(--magenta)) 1;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0,0,0, 0.37);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            max-width: 900px;
-            width: 100%;
             position: relative;
-            padding-top: 3rem; 
+        }
+        .dot-nav a:hover,
+        .dot-nav a.active {
+            background-color: #6A0DAD;
+            transform: scale(1.5);
+        }
+        .dot-nav a .tooltip {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #4A3F6D;
+            color: #F9F6FF;
+            padding: 4px 10px;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .dot-nav a:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .lights {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 50px;
+        /* Background canvas for fireworks */
+        #fireworks-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
             pointer-events: none;
         }
-        .lights .light-bulb {
-            animation: glow 2s infinite alternate;
-        }
-        .lights .light-bulb:nth-child(2) { animation-delay: 0.4s; }
-        .lights .light-bulb:nth-child(3) { animation-delay: 0.8s; }
-        .lights .light-bulb:nth-child(4) { animation-delay: 1.2s; }
-        .lights .light-bulb:nth-child(5) { animation-delay: 1.6s; }
 
-        @keyframes glow {
-            from { fill-opacity: 0.4; }
-            to { fill-opacity: 1; }
-        }
-        
-        /* Vertical Timeline */
-        .timeline { position: relative; max-height: 50vh; overflow-y: auto; padding-right: 1rem; }
-        .timeline::-webkit-scrollbar { width: 4px; }
-        .timeline::-webkit-scrollbar-thumb { background: var(--luminous-gold); border-radius: 2px; }
-        .timeline::before {
-            content: ''; position: absolute; top: 10px; left: 9px; height: 95%; width: 2px;
-            background: linear-gradient(var(--bright-turquoise), var(--luminous-gold));
-        }
-        .timeline-item { position: relative; padding-left: 40px; margin-bottom: 1.5rem; }
-        .timeline-dot {
-            position: absolute; left: 0; top: 4px; height: 20px; width: 20px;
-            background: var(--luminous-gold); border-radius: 50%;
-            border: 4px solid var(--deep-teal);
-            box-shadow: 0 0 10px var(--luminous-gold);
+        /* Section styles */
+        section {
+            padding: 100px 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Diya Animation */
-        .diya { width: 50px; height: 50px; filter: drop-shadow(0 0 5px var(--luminous-gold)); }
-        .diya-flame {
-            transform-origin: bottom;
-            animation: flicker 3s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        /* Card styles for experience and skills */
+        .content-card {
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(106, 13, 173, 0.2);
+            border-radius: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        @keyframes flicker {
-            0%, 100% { transform: scaleY(1) rotate(-2deg); opacity: 1; }
-            50% { transform: scaleY(0.95) rotate(2deg); opacity: 0.8; }
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(74, 63, 109, 0.1);
         }
+
+        /* Splash Screen Styles */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #F9F6FF;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease-in-out;
+            flex-direction: column;
+            padding: 1rem;
+        }
+        #main-content, #main-footer {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .hindi-greeting {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 2.75rem;
+            line-height: 1.2;
+            font-weight: 700;
+            background: linear-gradient(45deg, #FF8C00, #DAA520, #6A0DAD);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
     </style>
 </head>
-<body class="antialiased">
+<body class="overflow-x-hidden">
     
-    <div id="preloader">
-        <h1 class="diwali-greeting">दिवाली की हार्दिक शुभकामनाएँ</h1>
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="text-center">
+            <svg width="80" height="80" viewBox="0 0 64 64" class="mx-auto mb-4">
+                <path fill="#DAA520" d="M2 50 C 2 58, 62 58, 62 50 C 62 42, 2 42, 2 50 Z"></path>
+                <path fill="#FF8C00" d="M32 44 C 42 44, 42 20, 32 10 C 22 20, 22 44, 32 44 Z"></path>
+                <path fill="rgba(255,255,255,0.5)" d="M32 44 C 37 44, 37 30, 32 24 C 27 30, 27 44, 32 44 Z"></path>
+            </svg>
+            <h2 class="hindi-greeting">दीपावली की हार्दिक शुभकामनाएँ</h2>
+        </div>
     </div>
 
+
+    <!-- Background Firework Animation -->
     <canvas id="fireworks-canvas"></canvas>
 
-    <!-- Navigation -->
-    <nav class="dot-nav initially-hidden">
-        <a href="#hero" data-index="0" class="active"></a>
-        <a href="#about" data-index="1"></a>
-        <a href="#experience" data-index="2"></a>
-        <a href="#skills" data-index="3"></a>
-        <a href="#contact" data-index="4"></a>
+    <!-- Dot Navigation -->
+    <nav class="dot-nav hidden md:flex">
+        <a href="#home" class="active" data-section="home"><span class="tooltip">Home</span></a>
+        <a href="#experience" data-section="experience"><span class="tooltip">Experience</span></a>
+        <a href="#skills" data-section="skills"><span class="tooltip">Skills</span></a>
+        <a href="#certifications" data-section="certifications"><span class="tooltip">Certifications</span></a>
+        <a href="#education" data-section="education"><span class="tooltip">Education</span></a>
+        <a href="#contact" data-section="contact"><span class="tooltip">Contact</span></a>
     </nav>
-    
-    <!-- SVG Definitions for reuse -->
-    <svg style="display: none;">
-        <defs>
-            <g id="diya-svg">
-                <path fill="#FFC700" d="M2 20 C2 26, 18 26, 18 20 C18 14, 2 14, 2 20 Z"/>
-                <path class="diya-flame" fill="url(#flameGradient)" d="M10 15 C8 12, 12 12, 10 8 C10 4, 10 0, 10 0 C10 0, 10 4, 10 8 C12 12, 12 12, 10 15 Z"/>
-                <radialGradient id="flameGradient" cx="0.5" cy="0.5" r="0.5">
-                    <stop offset="0%" stop-color="#FFD700"/>
-                    <stop offset="100%" stop-color="#FF6F00"/>
-                </radialGradient>
-            </g>
-            <g id="lights-svg">
-                 <path d="M0 15 Q 50 30 100 15 T 200 15" stroke="rgba(253, 245, 230, 0.5)" stroke-width="2" fill="none"/>
-                <circle class="light-bulb" cx="20" cy="20" r="5" fill="var(--magenta)"/>
-                <circle class="light-bulb" cx="60" cy="25" r="5" fill="var(--luminous-gold)"/>
-                <circle class="light-bulb" cx="100" cy="27" r="5" fill="var(--bright-turquoise)"/>
-                <circle class="light-bulb" cx="140" cy="25" r="5" fill="var(--luminous-gold)"/>
-                <circle class="light-bulb" cx="180" cy="20" r="5" fill="var(--magenta)"/>
-            </g>
-        </defs>
-    </svg>
 
     <!-- Main Content -->
-    <main class="showcase-container initially-hidden">
-        
-        <!-- Hero Section -->
-        <section id="hero" class="showcase-section active">
-            <div class="content-wrapper text-center">
-                 <img src="https://placehold.co/150x150/003D4C/FDF5E6?text=PR" alt="Pritish Rajpurohit" class="rounded-full mx-auto mb-6 border-4 border-luminous-gold/50 shadow-lg shadow-luminous-gold/20">
-                <h1 class="text-6xl md:text-8xl font-bold text-soft-ivory">Pritish Rajpurohit</h1>
-                <p class="text-2xl md:text-4xl mt-4" style="color: var(--luminous-gold);">Senior Application Engineer</p>
-                <p class="text-lg md:text-2xl mt-2 text-gray-300">AI & ML Specialist</p>
-            </div>
-            <div class="scroll-hint">
-                <span class="text-sm">Scroll to Explore</span>
-                <i data-lucide="arrow-right" class="w-5 h-5"></i>
-            </div>
-        </section>
+    <main id="main-content" class="container mx-auto px-6 md:px-12">
 
-        <!-- About Section -->
-        <section id="about" class="showcase-section">
-            <div class="content-wrapper content-card p-12 text-center">
-                 <svg class="lights" viewBox="0 0 200 30"><use href="#lights-svg"/></svg>
-                <h2 class="section-title mb-6">
-                    <svg class="diya" viewBox="0 0 20 28"><use href="#diya-svg"/></svg>
-                    Namaste! 🙏
-                    <svg class="diya" viewBox="0 0 20 28" style="transform: scaleX(-1);"><use href="#diya-svg"/></svg>
-                </h2>
-                <p class="text-xl text-gray-300 leading-relaxed">
-                    I am an AI/ML Engineer with a passion for crafting intelligent applications. My experience spans the full stack, from cloud platforms like AWS & GCP to web frameworks like Angular and Django. I focus on turning data into meaningful solutions.
+        <!-- Section 1: Home -->
+        <section id="home" class="text-center">
+            <div class="max-w-4xl mx-auto">
+                <img src="https://placehold.co/150x150/F9F6FF/DAA520?text=PR" alt="Pritish Rajpurohit" class="w-40 h-40 mx-auto rounded-full border-4 border-rich-gold shadow-lg mb-6">
+                <h1 class="text-5xl md:text-7xl font-bold royal-purple mb-2">Pritish Rajpurohit</h1>
+                <p class="text-xl md:text-2xl festive-orange font-semibold">Full Stack Developer | Application Engineer | Cloud/AI Specialist</p>
+                <p class="mt-4 text-2xl rich-gold" style="font-family: 'Noto Sans Devanagari', sans-serif;">तमसो मा ज्योतिर्गमय</p>
+                <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
+                    A passionate and results-driven developer with expertise in building robust applications, managing cloud infrastructure, and leveraging AI to create intelligent solutions. Welcome to my digital space.
                 </p>
             </div>
         </section>
-        
-        <!-- Experience Section -->
-        <section id="experience" class="showcase-section">
-             <div class="content-wrapper content-card p-12">
-                 <svg class="lights" viewBox="0 0 200 30"><use href="#lights-svg"/></svg>
-                <h2 class="section-title mb-12 text-center">
-                    <svg class="diya" viewBox="0 0 20 28"><use href="#diya-svg"/></svg>
-                    Professional Journey 🚀
-                    <svg class="diya" viewBox="0 0 20 28" style="transform: scaleX(-1);"><use href="#diya-svg"/></svg>
-                </h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <p class="font-semibold text-sm" style="color: var(--magenta);">Oct 2025 - Present</p>
-                        <h3 class="text-2xl font-semibold mt-1">Senior Application Engineer</h3>
-                        <p class="text-gray-300">Bajaj Allianz General Insurance</p>
+
+        <!-- Decorative Divider with Diyas and Coins -->
+        <div class="flex justify-center items-center my-8">
+            <svg width="24" height="24" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/><circle cx="12" cy="12" r="5" fill="#FF8C00"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/></svg>
+            <svg width="48" height="48" viewBox="0 0 64 64" class="mx-4">
+                <path fill="#DAA520" d="M2 50 C 2 58, 62 58, 62 50 C 62 42, 2 42, 2 50 Z"></path>
+                <path fill="#FF8C00" d="M32 44 C 42 44, 42 20, 32 10 C 22 20, 22 44, 32 44 Z"></path>
+                <path fill="rgba(255,255,255,0.5)" d="M32 44 C 37 44, 37 30, 32 24 C 27 30, 27 44, 32 44 Z"></path>
+            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/><circle cx="12" cy="12" r="5" fill="#FF8C00"/></svg>
+        </div>
+
+        <!-- Section 2: Experience -->
+        <section id="experience">
+            <h2 class="text-4xl md:text-5xl font-bold royal-purple mb-12 text-center">Professional Experience</h2>
+            <div class="space-y-8 max-w-4xl w-full">
+                <!-- Job 1 -->
+                <div class="content-card p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Senior Application Engineer</h3>
+                            <p class="text-lg festive-orange font-semibold">Bajaj General Insurance Limited, Pune</p>
+                        </div>
+                        <p class="text-md text-gray-500 font-medium">July 2025 - Present</p>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <p class="font-semibold text-sm" style="color: var(--magenta);">Jul 2024 - Sep 2025</p>
-                        <h3 class="text-2xl font-semibold mt-1">Application Engineer</h3>
-                        <p class="text-gray-300">Bajaj Allianz General Insurance</p>
+                    <ul class="mt-4 list-disc list-inside text-gray-700 space-y-2">
+                        <li>Led development and maintenance across multiple Angular projects.</li>
+                        <li>Managed the full life cycle of the Angular Deployment Pipeline.</li>
+                        <li>Resolved critical backend production issues using AWS, Docker, PLSQL, and PostgreSQL.</li>
+                        <li>Implemented security best practices using STS and managed version control with Git/Github.</li>
+                    </ul>
+                </div>
+                <!-- Job 2 -->
+                <div class="content-card p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Application Engineer</h3>
+                            <p class="text-lg festive-orange font-semibold">Bajaj General Insurance Limited, Pune</p>
+                        </div>
+                        <p class="text-md text-gray-500 font-medium">July 2024 - July 2025</p>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <p class="font-semibold text-sm" style="color: var(--magenta);">Feb 2024 - Jun 2024</p>
-                        <h3 class="text-2xl font-semibold mt-1">Internship Trainee</h3>
-                        <p class="text-gray-300">Tata Motors Limited, CVBU</p>
+                    <ul class="mt-4 list-disc list-inside text-gray-700 space-y-2">
+                        <li>Resolved production issues for key applications by diagnosing full-stack failures.</li>
+                        <li>Gained practical experience operating on the AWS Console.</li>
+                        <li>Contributed to the development of AEM Frontend Projects.</li>
+                    </ul>
+                </div>
+                <!-- Job 3 -->
+                <div class="content-card p-6">
+                     <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Internship Trainee</h3>
+                            <p class="text-lg festive-orange font-semibold">Tata Motors Limited, Pimpri</p>
+                        </div>
+                        <p class="text-md text-gray-500 font-medium">Feb 2024 - June 2024</p>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <p class="font-semibold text-sm" style="color: var(--magenta);">Feb 2023 - Apr 2023</p>
-                        <h3 class="text-2xl font-semibold mt-1">UI/UX Internship</h3>
-                        <p class="text-gray-300">Imaginext Tech Solutions</p>
-                    </div>
+                    <ul class="mt-4 list-disc list-inside text-gray-700 space-y-2">
+                        <li>Contributed to live production projects using Django (Python) and React.</li>
+                        <li>Executed database optimization strategies to improve query speeds.</li>
+                        <li>Performed comprehensive QA testing and debugging.</li>
+                    </ul>
                 </div>
             </div>
         </section>
-        
-        <!-- Skills & Credentials Section -->
-        <section id="skills" class="showcase-section">
-            <div class="content-wrapper content-card p-12">
-                <svg class="lights" viewBox="0 0 200 30"><use href="#lights-svg"/></svg>
-                <h2 class="section-title mb-12 text-center">
-                    <svg class="diya" viewBox="0 0 20 28"><use href="#diya-svg"/></svg>
-                    Craft & Knowledge 🛠️
-                    <svg class="diya" viewBox="0 0 20 28" style="transform: scaleX(-1);"><use href="#diya-svg"/></svg>
-                </h2>
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div>
-                        <h3 class="text-3xl font-semibold text-center text-soft-ivory mb-8">My Toolkit</h3>
-                         <div class="flex flex-wrap gap-4 justify-center">
-                            <span class="bg-magenta/20 text-soft-ivory text-lg px-5 py-2 rounded-full">🧨 Generative AI</span>
-                            <span class="bg-magenta/20 text-soft-ivory text-lg px-5 py-2 rounded-full">🧨 Machine Learning</span>
-                            <span class="bg-magenta/20 text-soft-ivory text-lg px-5 py-2 rounded-full">🧨 AWS & GCP</span>
-                            <span class="bg-magenta/20 text-soft-ivory text-lg px-5 py-2 rounded-full">🧨 Android</span>
-                            <span class="bg-magenta/20 text-soft-ivory text-lg px-5 py-2 rounded-full">🧨 Firebase</span>
-                            <span class="bg-magenta/20 text-soft-ivory text-lg px-5 py-2 rounded-full">🧨 Angular & Django</span>
-                        </div>
+
+        <!-- Decorative Divider with Diyas and Coins -->
+        <div class="flex justify-center items-center my-8">
+            <svg width="24" height="24" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/><circle cx="12" cy="12" r="5" fill="#FF8C00"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/></svg>
+            <svg width="48" height="48" viewBox="0 0 64 64" class="mx-4">
+                <path fill="#DAA520" d="M2 50 C 2 58, 62 58, 62 50 C 62 42, 2 42, 2 50 Z"></path>
+                <path fill="#FF8C00" d="M32 44 C 42 44, 42 20, 32 10 C 22 20, 22 44, 32 44 Z"></path>
+                <path fill="rgba(255,255,255,0.5)" d="M32 44 C 37 44, 37 30, 32 24 C 27 30, 27 44, 32 44 Z"></path>
+            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/><circle cx="12" cy="12" r="5" fill="#FF8C00"/></svg>
+        </div>
+
+        <!-- Section 3: Skills -->
+        <section id="skills">
+            <h2 class="text-4xl md:text-5xl font-bold royal-purple mb-12 text-center">Technical Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full">
+                <div class="content-card p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Front-End</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-royal-purple text-white px-3 py-1 rounded-full text-sm font-semibold">Angular</span>
+                        <span class="bg-royal-purple text-white px-3 py-1 rounded-full text-sm font-semibold">React</span>
+                        <span class="bg-royal-purple text-white px-3 py-1 rounded-full text-sm font-semibold">HTML & CSS</span>
+                        <span class="bg-royal-purple text-white px-3 py-1 rounded-full text-sm font-semibold">JavaScript & TypeScript</span>
+                        <span class="bg-royal-purple text-white px-3 py-1 rounded-full text-sm font-semibold">Flutter</span>
                     </div>
-                    <div>
-                        <h3 class="text-3xl font-semibold text-center text-soft-ivory mb-8">Credentials</h3>
-                        <ul class="space-y-4 text-gray-300 text-lg">
-                            <li class="flex items-center gap-3"><i data-lucide="award" class="w-6 h-6 text-luminous-gold flex-shrink-0"></i> Google Business Intelligence</li>
-                            <li class="flex items-center gap-3"><i data-lucide="award" class="w-6 h-6 text-luminous-gold flex-shrink-0"></i> Google Cloud Certified</li>
-                            <li class="flex items-center gap-3"><i data-lucide="award" class="w-6 h-6 text-luminous-gold flex-shrink-0"></i> Generative AI Fundamentals</li>
-                        </ul>
+                </div>
+                 <div class="content-card p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Back-End & Databases</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-festive-orange text-white px-3 py-1 rounded-full text-sm font-semibold">Laravel & PHP</span>
+                         <span class="bg-festive-orange text-white px-3 py-1 rounded-full text-sm font-semibold">Django & Flask</span>
+                        <span class="bg-festive-orange text-white px-3 py-1 rounded-full text-sm font-semibold">PLSQL & PostgreSQL</span>
+                        <span class="bg-festive-orange text-white px-3 py-1 rounded-full text-sm font-semibold">Firebase</span>
+                    </div>
+                </div>
+                 <div class="content-card p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Cloud & DevOps</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-royal-purple text-white px-3 py-1 rounded-full text-sm font-semibold">AWS</span>
+                        <span class="bg-royal-purple text-white px-3 py-1 rounded-full text-sm font-semibold">Google Cloud (GCP)</span>
+                        <span class="bg-royal-purple text-white px-3 py-1 rounded-full text-sm font-semibold">Docker</span>
+                        <span class="bg-royal-purple text-white px-3 py-1 rounded-full text-sm font-semibold">Git & Github</span>
+                        <span class="bg-royal-purple text-white px-3 py-1 rounded-full text-sm font-semibold">CI/CD</span>
+                    </div>
+                </div>
+                <div class="content-card p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">AI/ML & BI</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-rich-gold text-white px-3 py-1 rounded-full text-sm font-semibold">Machine Learning</span>
+                        <span class="bg-rich-gold text-white px-3 py-1 rounded-full text-sm font-semibold">Artificial Intelligence</span>
+                        <span class="bg-rich-gold text-white px-3 py-1 rounded-full text-sm font-semibold">Google BI</span>
+                        <span class="bg-rich-gold text-white px-3 py-1 rounded-full text-sm font-semibold">CCAI Insights</span>
+                    </div>
+                </div>
+                 <div class="content-card p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Programming Languages</h3>
+                     <div class="flex flex-wrap gap-2">
+                        <span class="bg-royal-purple text-white px-3 py-1 rounded-full text-sm font-semibold">Python</span>
+                        <span class="bg-royal-purple text-white px-3 py-1 rounded-full text-sm font-semibold">JavaScript/TypeScript</span>
+                        <span class="bg-royal-purple text-white px-3 py-1 rounded-full text-sm font-semibold">SQL</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="showcase-section">
-             <div class="content-wrapper text-center">
-                <h2 class="section-title text-5xl">
-                    <svg class="diya" viewBox="0 0 20 28"><use href="#diya-svg"/></svg>
-                    Let's Connect ✨
-                    <svg class="diya" viewBox="0 0 20 28" style="transform: scaleX(-1);"><use href="#diya-svg"/></svg>
-                </h2>
-                <p class="text-xl text-gray-300 my-8 max-w-xl mx-auto">I'm always open to new collaborations and exciting projects. Feel free to reach out!</p>
-                <a href="mailto:pritish.rajpurohit@outlook.com" class="btn-primary inline-block py-4 px-12 text-xl">Send an Email</a>
+        <!-- Decorative Divider with Diyas and Coins -->
+        <div class="flex justify-center items-center my-8">
+            <svg width="24" height="24" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/><circle cx="12" cy="12" r="5" fill="#FF8C00"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/></svg>
+            <svg width="48" height="48" viewBox="0 0 64 64" class="mx-4">
+                <path fill="#DAA520" d="M2 50 C 2 58, 62 58, 62 50 C 62 42, 2 42, 2 50 Z"></path>
+                <path fill="#FF8C00" d="M32 44 C 42 44, 42 20, 32 10 C 22 20, 22 44, 32 44 Z"></path>
+                <path fill="rgba(255,255,255,0.5)" d="M32 44 C 37 44, 37 30, 32 24 C 27 30, 27 44, 32 44 Z"></path>
+            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/><circle cx="12" cy="12" r="5" fill="#FF8C00"/></svg>
+        </div>
+        
+        <!-- Section 4: Certifications -->
+        <section id="certifications">
+            <h2 class="text-4xl md:text-5xl font-bold royal-purple mb-12 text-center">Certifications</h2>
+             <div class="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="content-card p-4 flex items-center space-x-4">
+                    <div class="text-3xl rich-gold">🏆</div>
+                    <p class="text-gray-700">Google Business Intelligence Certificate - Coursera</p>
+                </div>
+                <div class="content-card p-4 flex items-center space-x-4">
+                    <div class="text-3xl rich-gold">🏆</div>
+                    <p class="text-gray-700">Implement Load Balancing on Compute Engine - Google Cloud</p>
+                </div>
+                <div class="content-card p-4 flex items-center space-x-4">
+                    <div class="text-3xl rich-gold">🏆</div>
+                    <p class="text-gray-700">Google Cloud Computing Foundations Certificate - Google Cloud</p>
+                </div>
+                <div class="content-card p-4 flex items-center space-x-4">
+                    <div class="text-3xl rich-gold">🏆</div>
+                    <p class="text-gray-700">Generative AI Fundamentals - Google Cloud</p>
+                </div>
+                 <div class="content-card p-4 flex items-center space-x-4">
+                    <div class="text-3xl rich-gold">🏆</div>
+                    <p class="text-gray-700">CCAI Insights - Google Cloud</p>
+                </div>
+                <div class="content-card p-4 flex items-center space-x-4">
+                    <div class="text-3xl rich-gold">🏆</div>
+                    <p class="text-gray-700">SQL (Advanced) - HackerRank</p>
+                </div>
             </div>
         </section>
+
+        <!-- Decorative Divider with Diyas and Coins -->
+        <div class="flex justify-center items-center my-8">
+            <svg width="24" height="24" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/><circle cx="12" cy="12" r="5" fill="#FF8C00"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/></svg>
+            <svg width="48" height="48" viewBox="0 0 64 64" class="mx-4">
+                <path fill="#DAA520" d="M2 50 C 2 58, 62 58, 62 50 C 62 42, 2 42, 2 50 Z"></path>
+                <path fill="#FF8C00" d="M32 44 C 42 44, 42 20, 32 10 C 22 20, 22 44, 32 44 Z"></path>
+                <path fill="rgba(255,255,255,0.5)" d="M32 44 C 37 44, 37 30, 32 24 C 27 30, 27 44, 32 44 Z"></path>
+            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/><circle cx="12" cy="12" r="5" fill="#FF8C00"/></svg>
+        </div>
+
+        <!-- Section 5: Education -->
+        <section id="education">
+            <h2 class="text-4xl md:text-5xl font-bold royal-purple mb-12 text-center">Education</h2>
+            <div class="content-card p-8 max-w-2xl w-full text-center">
+                <h3 class="text-3xl font-bold text-gray-800">Bachelor of Engineering in Information Technology</h3>
+                <p class="text-xl festive-orange font-semibold mt-2">International Institute of Information Technology, Pune</p>
+                <p class="text-md text-gray-500 font-medium mt-1">April 2020 - June 2024</p>
+                <p class="mt-4 text-gray-700">
+                    Gained foundational and advanced knowledge in Data Structures, Algorithms, OOP, DBMS, OS, Cloud Computing, and AI/ML.
+                </p>
+            </div>
+        </section>
+
+        <!-- Decorative Divider with Diyas and Coins -->
+        <div class="flex justify-center items-center my-8">
+            <svg width="24" height="24" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/><circle cx="12" cy="12" r="5" fill="#FF8C00"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/></svg>
+            <svg width="48" height="48" viewBox="0 0 64 64" class="mx-4">
+                <path fill="#DAA520" d="M2 50 C 2 58, 62 58, 62 50 C 62 42, 2 42, 2 50 Z"></path>
+                <path fill="#FF8C00" d="M32 44 C 42 44, 42 20, 32 10 C 22 20, 22 44, 32 44 Z"></path>
+                <path fill="rgba(255,255,255,0.5)" d="M32 44 C 37 44, 37 30, 32 24 C 27 30, 27 44, 32 44 Z"></path>
+            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" class="mx-1"><circle cx="12" cy="12" r="8" fill="#DAA520"/><circle cx="12" cy="12" r="5" fill="#FF8C00"/></svg>
+        </div>
+
+        <!-- Section 6: Contact -->
+        <section id="contact">
+            <h2 class="text-4xl md:text-5xl font-bold royal-purple mb-8 text-center">Get In Touch</h2>
+            <p class="text-lg text-center text-gray-600 max-w-2xl mb-12">
+                I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision.
+            </p>
+            <div class="flex flex-col md:flex-row gap-8">
+                 <a href="mailto:pritish.rajpurohit@outlook.com" class="content-card p-6 flex items-center space-x-4 w-72">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 rich-gold" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Email</h3>
+                        <p class="text-gray-600">pritish.rajpurohit@outlook.com</p>
+                    </div>
+                </a>
+                <div class="content-card p-6 flex items-center space-x-4 w-72">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 rich-gold" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Phone</h3>
+                        <p class="text-gray-600">(+91) 8605988403</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
+    <!-- Footer -->
+    <footer id="main-footer" class="text-center py-8 border-t border-gray-200">
+        <div class="container mx-auto px-6 md:px-12">
+            <p class="text-gray-500">&copy; 2025 Pritish Rajpurohit. All Rights Reserved.</p>
+            <p class="text-gray-400 text-sm mt-2">Designed with a touch of Diwali magic.</p>
+        </div>
+    </footer>
+
     <script>
-        lucide.createIcons();
-
-        const sections = document.querySelectorAll('.showcase-section');
-        const navLinks = document.querySelectorAll('.dot-nav a');
-        const mainContainer = document.querySelector('.showcase-container');
-        let currentSection = 0;
-        let isWheeling = false;
-
-        function navigateToSection(index) {
-            if (index < 0 || index >= sections.length) return;
-            
-            mainContainer.style.transform = `translateX(-${index * 100}vw)`;
-            
-            sections.forEach(sec => sec.classList.remove('active'));
-            sections[index].classList.add('active');
-            
-            navLinks.forEach(link => link.classList.remove('active'));
-            navLinks[index].classList.add('active');
-
-            currentSection = index;
-        }
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const index = parseInt(e.target.dataset.index);
-                navigateToSection(index);
-            });
-        });
-
-        window.addEventListener('wheel', (e) => {
-            if (isWheeling) return;
-            isWheeling = true;
-
-            if (e.deltaY > 0) { // Scrolling down/right
-                navigateToSection(currentSection + 1);
-            } else { // Scrolling up/left
-                navigateToSection(currentSection - 1);
-            }
-            
-            setTimeout(() => { isWheeling = false; }, 1200); // Cooldown to prevent rapid scrolling
-        });
-        
-        // Fireworks script
-        const canvas = document.getElementById('fireworks-canvas');
-        const ctx = canvas.getContext('2d');
-        let fireworks = [];
-        let particles = [];
-        const fireworkColors = [ '#FFD700', '#D9006C', '#00C9A7' ];
-        function setupCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        setupCanvas();
-        function Firework(sx, sy, tx, ty) { this.x=sx;this.y=sy;this.sx=sx;this.sy=sy;this.tx=tx;this.ty=ty; this.distanceToTarget=Math.sqrt(Math.pow(tx-sx,2)+Math.pow(ty-sy,2)); this.distanceTraveled=0; this.coordinates=Array(3).fill([this.x,this.y]); this.angle=Math.atan2(ty-sy,tx-sx); this.speed=2; this.acceleration=1.03; this.brightness=Math.random()*30+70; this.color = fireworkColors[Math.floor(Math.random() * fireworkColors.length)]; }
-        Firework.prototype.update=function(index){this.coordinates.pop();this.coordinates.unshift([this.x,this.y]);this.speed*=this.acceleration;let vx=Math.cos(this.angle)*this.speed;let vy=Math.sin(this.angle)*this.speed;this.distanceTraveled=Math.sqrt(Math.pow(this.x-this.sx,2)+Math.pow(this.y-this.sy,2));if(this.distanceTraveled>=this.distanceToTarget){createParticles(this.tx,this.ty,this.color);fireworks.splice(index,1)}else{this.x+=vx;this.y+=vy}};
-        Firework.prototype.draw=function(){ctx.beginPath();ctx.moveTo(this.coordinates[this.coordinates.length-1][0],this.coordinates[this.coordinates.length-1][1]);ctx.lineTo(this.x,this.y);ctx.lineWidth=2;ctx.strokeStyle=this.color;ctx.stroke()};
-        function Particle(x, y, color) { this.x=x;this.y=y;this.coordinates=Array(5).fill([this.x,this.y]); this.angle=Math.random()*Math.PI*2; this.speed=Math.random()*8+1; this.friction=0.97; this.gravity=1; this.color=color; this.alpha=1; this.decay=Math.random()*0.02+0.015; }
-        Particle.prototype.update=function(index){this.coordinates.pop();this.coordinates.unshift([this.x,this.y]);this.speed*=this.friction;this.x+=Math.cos(this.angle)*this.speed;this.y+=Math.sin(this.angle)*this.speed+this.gravity;this.alpha-=this.decay;if(this.alpha<=this.decay)particles.splice(index,1)};
-        Particle.prototype.draw=function(){ctx.beginPath();ctx.moveTo(this.coordinates[this.coordinates.length-1][0],this.coordinates[this.coordinates.length-1][1]);ctx.lineTo(this.x,this.y);ctx.lineWidth=2;ctx.strokeStyle=`hsla(${hexToHsl(this.color).h}, ${hexToHsl(this.color).s}%, ${hexToHsl(this.color).l}%, ${this.alpha})`;ctx.stroke()};
-        function createParticles(x,y,color){let p=60;while(p--)particles.push(new Particle(x,y,color))}
-        function loop(){requestAnimationFrame(loop);ctx.globalCompositeOperation='destination-out';ctx.fillStyle='rgba(0, 25, 32, 0.2)';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.globalCompositeOperation='lighter';fireworks.forEach((f,i)=>f.update(i));particles.forEach((p,i)=>p.update(i));fireworks.forEach(f=>f.draw());particles.forEach(p=>p.draw());if(Math.random()<0.02){let sx=Math.random()*canvas.width;let sy=canvas.height;let tx=Math.random()*canvas.width;let ty=Math.random()*canvas.height/2;fireworks.push(new Firework(sx,sy,tx,ty))}}
-        function hexToHsl(H) {let r=0,g=0,b=0;if(H.length==4){r="0x"+H[1]+H[1];g="0x"+H[2]+H[2];b="0x"+H[3]+H[3]}else if(H.length==7){r="0x"+H[1]+H[2];g="0x"+H[3]+H[4];b="0x"+H[5]+H[6]} r/=255;g/=255;b/=255;let cmin=Math.min(r,g,b),cmax=Math.max(r,g,b),delta=cmax-cmin,h=0,s=0,l=0;if(delta==0)h=0;else if(cmax==r)h=((g-b)/delta)%6;else if(cmax==g)h=(b-r)/delta+2;else h=(r-g)/delta+4; h=Math.round(h*60);if(h<0)h+=360; l=(cmax+cmin)/2;s=delta==0?0:delta/(1-Math.abs(2*l-1));s=+(s*100).toFixed(1);l=+(l*100).toFixed(1); return {h,s,l}; }
-        
-        window.addEventListener('resize', setupCanvas);
-        
-        window.onload = () => {
-            const preloader = document.getElementById('preloader');
-            const mainContent = document.querySelector('.showcase-container');
-            const nav = document.querySelector('.dot-nav');
+        // --- SPLASH SCREEN LOGIC ---
+        window.addEventListener('load', () => {
+            const splash = document.getElementById('splash-screen');
+            const mainContent = document.getElementById('main-content');
+            const mainFooter = document.getElementById('main-footer');
 
             setTimeout(() => {
-                preloader.classList.add('fade-out');
-                
-                mainContent.classList.remove('initially-hidden');
-                mainContent.classList.add('visible');
-                
-                nav.classList.remove('initially-hidden');
-                nav.classList.add('visible');
+                splash.style.opacity = '0';
+                mainContent.style.opacity = '1';
+                mainFooter.style.opacity = '1';
 
                 setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 1000); 
-            }, 3000); // Show preloader for 3 seconds
+                    splash.style.display = 'none';
+                }, 1000); // Match the CSS transition duration
+            }, 3000); // 3 seconds delay for the splash screen
+        });
 
-            loop(); // Start fireworks animation
+
+        // --- DOT NAVIGATION LOGIC ---
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.dot-nav a');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.6
         };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('data-section') === id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // --- FIREWORKS ANIMATION LOGIC ---
+        const canvas = document.getElementById('fireworks-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let fireworks = [];
+        let particles = [];
+        const colors = ['#FF8C00', '#DAA520', '#6A0DAD', '#FF5733', '#FFFFFF', '#C8A2C8', '#FFC300']; // New multicolor palette
+
+        function Firework(sx, sy, tx, ty) {
+            this.x = sx;
+            this.y = sy;
+            this.sx = sx;
+            this.sy = sy;
+            this.tx = tx;
+            this.ty = ty;
+            this.distanceToTarget = Math.sqrt(Math.pow(tx - sx, 2) + Math.pow(ty - sy, 2));
+            this.distanceTraveled = 0;
+            this.angle = Math.atan2(ty - sy, tx - sx);
+            this.speed = 2;
+            this.acceleration = 1.05;
+            this.brightness = Math.random() * 50 + 50;
+            this.targetRadius = 1;
+        }
+
+        Firework.prototype.update = function(index) {
+            this.speed *= this.acceleration;
+            let vx = Math.cos(this.angle) * this.speed;
+            let vy = Math.sin(this.angle) * this.speed;
+            this.distanceTraveled = Math.sqrt(Math.pow(this.x - this.sx, 2) + Math.pow(this.y - this.sy, 2));
+
+            if (this.distanceTraveled >= this.distanceToTarget) {
+                createParticles(this.tx, this.ty);
+                fireworks.splice(index, 1);
+            } else {
+                this.x += vx;
+                this.y += vy;
+            }
+        };
+
+        Firework.prototype.draw = function() {
+            ctx.beginPath();
+            ctx.moveTo(this.x, this.y);
+            ctx.lineTo(this.x - Math.cos(this.angle) * 10, this.y - Math.sin(this.angle) * 10);
+            ctx.strokeStyle = `hsl(${Math.random() * 360}, 100%, ${this.brightness}%)`; // Full spectrum of colors
+            ctx.stroke();
+        };
+
+        function Particle(x, y) {
+            this.x = x;
+            this.y = y;
+            this.angle = Math.random() * Math.PI * 2;
+            this.speed = Math.random() * 6 + 1;
+            this.friction = 0.97;
+            this.gravity = 0.5;
+            this.alpha = 1;
+            this.decay = Math.random() * 0.03 + 0.01;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        Particle.prototype.update = function(index) {
+            this.speed *= this.friction;
+            this.x += Math.cos(this.angle) * this.speed;
+            this.y += Math.sin(this.angle) * this.speed + this.gravity;
+            this.alpha -= this.decay;
+            if (this.alpha <= this.decay) {
+                particles.splice(index, 1);
+            }
+        };
+
+        Particle.prototype.draw = function() {
+            ctx.save();
+            ctx.globalAlpha = this.alpha;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, 2, 0, Math.PI * 2, false);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.restore();
+        };
+
+        function createParticles(x, y) {
+            let particleCount = 100;
+            while (particleCount--) {
+                particles.push(new Particle(x, y));
+            }
+        }
+
+        function launchFirework() {
+            if (fireworks.length < 10) { // Limit number of on-screen fireworks
+                let startX = canvas.width / 2;
+                let startY = canvas.height;
+                let targetX = Math.random() * canvas.width;
+                let targetY = Math.random() * canvas.height / 2;
+                fireworks.push(new Firework(startX, startY, targetX, targetY));
+            }
+        }
+        
+        let launchInterval = setInterval(launchFirework, 1000);
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.fillStyle = 'rgba(249, 246, 255, 0.1)'; // Fading trail effect for light background
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            let i = fireworks.length;
+            while (i--) {
+                fireworks[i].draw();
+                fireworks[i].update(i);
+            }
+
+            let j = particles.length;
+            while (j--) {
+                particles[j].draw();
+                particles[j].update(j);
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        animate();
     </script>
 
-    <script src="/assets/js/rvp-script.js"></script>
+    <script src="assets/js/rvp-script.js"></script>
+
 
 </body>
 </html>
