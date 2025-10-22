@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pritish Rajpurohit | Professional Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&family=Poppins:wght@600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Futuristic Dark Theme */
+        :root {
+            --dark-primary: #0A0A1A; /* Very Dark Blue/Purple */
+            --dark-secondary: #1A1A2E; /* Card background */
+            --accent: #9F70FD; /* Electric Purple */
+            --accent-glow: rgba(159, 112, 253, 0.5); /* For glows */
+            --light-primary: #F9FAFB; /* Headings */
+            --light-secondary: #D1D5DB; /* Body text */
+            --border-color: #322849; /* Darker accent for borders */
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-primary);
+            color: var(--light-secondary);
+            padding-bottom: 80px; /* Space for mobile bottom nav */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        @media (min-width: 768px) {
+            body {
+                padding-left: 90px; /* Space for desktop side nav */
+                padding-bottom: 0;
+            }
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--light-primary);
+        }
+        .mono {
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        /* Animated Gradient Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(159, 112, 253, 0.1), transparent 30%), 
+                radial-gradient(circle at 80% 90%, rgba(0, 201, 255, 0.1), transparent 30%);
+            background-size: 200% 200%;
+            animation: moveGlow 20s ease-in-out infinite;
+        }
+
+        @keyframes moveGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Color Palette Helpers */
+        .bg-dark-primary { background-color: var(--dark-primary); }
+        .bg-dark-secondary { background-color: var(--dark-secondary); }
+        .text-light-primary { color: var(--light-primary); }
+        .text-light-secondary { color: var(--light-secondary); }
+        .text-accent { color: var(--accent); }
+        .bg-accent { background-color: var(--accent); }
+        .border-accent { border-color: var(--accent); }
+
+        /* Section styles */
+        section {
+            padding: 100px 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Prevent content overflow issues */
+        }
+
+        /* Side Navigation (Desktop) */
+        .side-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 90px;
+            background-color: rgba(26, 26, 46, 0.8); /* bg-dark-secondary with opacity */
+            backdrop-filter: blur(10px);
+            border-right: 1px solid var(--border-color);
+            z-index: 50;
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 0;
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .side-nav { display: flex; }
+        }
+        .side-nav-logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--light-primary);
+        }
+        .side-nav-link {
+            position: relative;
+            width: 52px;
+            height: 52px;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-secondary);
+            transition: all 0.3s ease;
+        }
+        .side-nav-link:hover,
+        .side-nav-link.active {
+            background-color: var(--accent);
+            color: #FFFFFF;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        .side-nav-link .tooltip {
+            position: absolute;
+            left: 100px;
+            background-color: var(--dark-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--light-primary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+            font-weight: 500;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+        .side-nav-link:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        /* Bottom Navigation (Mobile) */
+        .bottom-nav {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 70px;
+            width: 90%;
+            max-width: 400px;
+            background-color: rgba(26, 26, 46, 0.8); /* bg-dark-secondary with opacity */
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 1.5rem;
+            z-index: 50;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 0.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        @media (min-width: 768px) {
+            .bottom-nav { display: none; }
+        }
+        .bottom-nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-secondary);
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 0.75rem;
+        }
+        .bottom-nav-link.active {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        .bottom-nav-link.active .bottom-nav-icon {
+            animation: bounce 0.6s;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* General Card Style */
+        .content-card {
+            background-color: var(--dark-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(159, 112, 253, 0.3);
+            border-color: var(--accent);
+        }
+
+        /* Button Style */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: var(--accent);
+            color: #FFFFFF;
+        }
+        .btn-primary:hover {
+            background-color: #8a5cf6; /* Darker Purple */
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--light-primary);
+            border: 2px solid var(--border-color);
+        }
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+            color: var(--light-primary);
+            border-color: var(--accent);
+        }
+
+        /* Experience Timeline */
+        .timeline-container {
+            position: relative;
+            max-width: 42rem;
+            width: 100%;
+            margin-left: 1rem;
+            border-left: 3px solid var(--border-color);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 2.5rem;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -14px;
+            top: 5px;
+            width: 24px;
+            height: 24px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            border: 4px solid var(--dark-primary); /* Adjusted to primary dark */
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        .timeline-card {
+            background-color: var(--dark-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .timeline-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 25px rgba(159, 112, 253, 0.2);
+        }
+        .timeline-date { /* Added styling for date */
+             color: var(--light-secondary);
+             font-size: 0.875rem; /* 14px */
+             margin-bottom: 0.25rem;
+        }
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--light-primary);
+        }
+        .timeline-company {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+        .timeline-desc {
+            list-style: disc;
+            list-style-position: inside;
+            color: var(--light-secondary);
+            padding-left: 0.5rem; /* Indent list items slightly */
+        }
+        .timeline-desc li { /* Add spacing between list items */
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Highlight Current Job --- */
+        .timeline-item-current .timeline-card {
+            border-color: var(--accent);
+            box-shadow: 0 0 25px rgba(159, 112, 253, 0.3);
+        }
+        .timeline-item-current .timeline-dot {
+            animation: pulseGlow 1.5s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 15px var(--accent-glow);
+            }
+            50% {
+                transform: scale(1.2);
+                box-shadow: 0 0 25px rgba(159, 112, 253, 1);
+            }
+        }
+        /* --- End Current Job Highlight --- */
+
+
+        /* Skills Tabbed Interface */
+        .skills-container {
+            max-width: 64rem;
+            width: 100%;
+            background-color: var(--dark-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+        .skills-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .skill-tab-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            color: var(--light-secondary);
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .skill-tab-btn:hover {
+            color: #FFFFFF;
+            background-color: var(--border-color); /* Use border color for hover */
+        }
+        .skill-tab-btn.active {
+            color: #FFFFFF;
+            background-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        .skill-tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .skill-tab-content.active {
+            display: block;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: var(--dark-primary); /* Adjusted to primary dark */
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        .skill-card-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 0.75rem auto;
+            color: var(--accent);
+        }
+        .skill-card-icon svg {
+             width: 100%;
+             height: 100%;
+             /* Removed fill: currentColor; to respect original SVG colors/strokes */
+             stroke: currentColor; /* Ensure stroke icons work */
+             stroke-width: 1.5; /* Default stroke width */
+        }
+         /* Specific adjustments if needed */
+        .skill-card-icon svg text { fill: currentColor; } /* Ensure text SVG fills */
+
+        .skill-card-name {
+            font-weight: 600;
+            color: var(--light-primary);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+        /* Certification Section Style */
+        .cert-card {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background-color: var(--dark-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(159, 112, 253, 0.3);
+            border-color: var(--accent);
+        }
+        .cert-icon {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background-color: var(--border-color); /* Use border color */
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            box-shadow: 0 0 15px rgba(159, 112, 253, 0.4);
+        }
+
+        /* Education Section Style */
+        .education-spotlight {
+            background-color: var(--dark-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .education-spotlight:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(159, 112, 253, 0.3);
+            border-color: var(--accent);
+        }
+        .education-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--border-color); /* Use border color */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+
+        /* Scroll Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- ADDED: Logo Animation --- */
+        .logo-animate {
+            position: relative; /* Needed for absolute positioning of children */
+            width: 160px; /* w-40 */
+            height: 160px; /* h-40 */
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 9999px; /* rounded-full */
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 30px rgba(159,112,253,0.5); /* shadow-lg custom */
+            margin-bottom: 1.5rem; /* mb-6 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--dark-secondary);
+            perspective: 800px; /* For the 3D flip */
+        }
+        .logo-frame {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            
+            /* Flip Animation Setup */
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            
+            opacity: 0;
+            animation: flip-sequence 20s infinite ease-in-out;
+        }
+        .logo-frame svg {
+            width: 50px;
+            height: 50px;
+            stroke: var(--accent);
+            stroke-width: 1.5;
+            fill: none; /* Make sure SVGs use stroke by default */
+        }
+        .logo-frame svg path {
+             /* Ensure paths inherit stroke */
+             stroke: currentColor;
+        }
+
+
+        /* Keyframes for the flip sequence */
+        @keyframes flip-sequence {
+            /* Total duration is 2s per item (100% / 10 items = 10%) */
+            /* Start flipped 90deg (invisible) */
+            0% { opacity: 0; transform: rotateY(90deg) scale(0.9); }
+            /* Flip in (0.2s) */
+            1% { opacity: 1; transform: rotateY(0deg) scale(1); }
+            /* Hold (1.6s) */
+            9% { opacity: 1; transform: rotateY(0deg) scale(1); }
+            /* Flip out (0.2s) */
+            10% { opacity: 0; transform: rotateY(-90deg) scale(0.9); }
+            /* Rest of animation is invisible */
+            100% { opacity: 0; }
+        }
+
+        /* Animation delays for each frame */
+        .logo-code { animation-delay: 0s; }
+        .logo-mobile { animation-delay: 2s; }
+        .logo-laptop { animation-delay: 4s; }
+        .logo-server { animation-delay: 6s; }
+        .logo-keyboard { animation-delay: 8s; }
+        .logo-monitor { animation-delay: 10s; }
+        .logo-mouse { animation-delay: 12s; }
+        .logo-console { animation-delay: 14s; }
+        .logo-cloud { animation-delay: 16s; }
+        .logo-github { animation-delay: 18s; }
+        /* --- End Logo Animation --- */
+
+        /* --- ADDED: Typing Animation --- */
+        .typing-container {
+            font-size: 1.75rem; /* text-2xl */
+            line-height: 2.25rem; /* leading-9 */
+            height: 2.25rem; /* Match line height */
+            display: inline-block;
+            vertical-align: top;
+            margin-bottom: 1.5rem; /* mb-6 */
+            font-weight: 600; /* font-semibold */
+            color: var(--accent); /* text-accent */
+        }
+        .typing-text {
+            border-right: .15em solid var(--accent);
+            white-space: nowrap;
+            overflow: hidden;
+            margin: 0 auto;
+            display: inline-block;
+            animation: typing 2s steps(40, end),
+                         blink-caret .75s step-end infinite;
+        }
+        
+        /* The typing effect */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        /* The typewriter cursor effect */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent); }
+        }
+        /* --- End Typing Animation --- */
+
+
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Side Navigation (Desktop) -->
+    <nav class="side-nav">
+        <a href="#home" class="side-nav-logo">
+            P<span class="text-accent">.</span>R<span class="text-accent">.</span>
+        </a>
+        <div class="flex flex-col gap-6 mt-8">
+            <a href="#home" data-section="home" class="side-nav-link active">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1V9a1 1 0 011-1h2a1 1 0 011 1v10a1 1 0 001 1m-6 0h6" /></svg>
+                <span class="tooltip">Home</span>
+            </a>
+            <a href="#experience" data-section="experience" class="side-nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                <span class="tooltip">Experience</span>
+            </a>
+            <a href="#skills" data-section="skills" class="side-nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                <span class="tooltip">Skills</span>
+            </a>
+            <a href="#certifications" data-section="certifications" class="side-nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
+                <span class="tooltip">Certs</span>
+            </a>
+            <a href="#contact" data-section="contact" class="side-nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                <span class="tooltip">Contact</span>
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="bottom-nav">
+        <a href="#home" data-section="home" class="bottom-nav-link active">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bottom-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1V9a1 1 0 011-1h2a1 1 0 011 1v10a1 1 0 001 1m-6 0h6" /></svg>
+        </a>
+        <a href="#experience" data-section="experience" class="bottom-nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bottom-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+        </a>
+        <a href="#skills" data-section="skills" class="bottom-nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bottom-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+        </a>
+        <a href="#certifications" data-section="certifications" class="bottom-nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bottom-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
+        </a>
+        <a href="#contact" data-section="contact" class="bottom-nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bottom-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+        </a>
+    </nav>
+    
+    <!-- Main Content -->
+    <main id="main-content" class="container mx-auto px-6 md:px-12">
+
+        <!-- Section 1: Home -->
+        <section id="home" class="text-center reveal">
+            <div class="max-w-4xl mx-auto">
+                 <!-- ADDED: Animated Logo Div -->
+                <div class="logo-animate">
+                    <!-- Frame 1: Code -->
+                    <span class="logo-frame logo-code">&lt;/&gt;</span>
+                    <!-- Frame 2: Mobile -->
+                    <span class="logo-frame logo-mobile">
+                        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75A2.25 2.25 0 0 0 15.75 1.5h-2.25m-3 0V3m3 0V3m0 18v-1.5m-3 0v1.5m-3 0H6.75m9 0h1.5" /></svg>
+                    </span>
+                    <!-- Frame 3: Laptop -->
+                    <span class="logo-frame logo-laptop">
+                         <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21M15 17.25v1.007a3 3 0 0 0 .879 2.122L16.5 21m-4.5 0h.008v.008h-.008v-.008Zm0 0H12m-4.5 0H7.5m9 0H16.5m-4.5 0h.008v.008h-.008v-.008Zm0 0H12m2.25-4.5h-6.5m6.5 0a2.25 2.25 0 0 1 2.25 2.25v2.25a2.25 2.25 0 0 1-2.25 2.25h-6.5a2.25 2.25 0 0 1-2.25-2.25V15a2.25 2.25 0 0 1 2.25-2.25m6.5 0V3.75a2.25 2.25 0 0 0-2.25-2.25h-6.5a2.25 2.25 0 0 0-2.25 2.25v8.25" /></svg>
+                    </span>
+                    <!-- Frame 4: Server/DB -->
+                    <span class="logo-frame logo-server">
+                        <svg fill="none" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="9" ry="3" stroke="currentColor" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M3 6v12c0 1.66 4.03 3 9 3s9-1.34 9-3V6" stroke="currentColor" stroke-width="2"/></svg>
+                    </span>
+                    <!-- Frame 5: Keyboard -->
+                    <span class="logo-frame logo-keyboard">
+                        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h.008v.008H8.25v-.008Zm0 0H8.25m2.25 0h.008v.008H10.5v-.008Zm2.25 0h.008v.008H12.75v-.008Zm2.25 0h.008v.008H15v-.008Zm2.25 0h.008v.008H17.25v-.008Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 12h8.25m-8.25 0h.008v.008H8.25V12Zm2.25 0h.008v.008H10.5V12Zm2.25 0h.008v.008H12.75V12Zm2.25 0h.008v.008H15V12Zm2.25 0h.008v.008H17.25V12Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M3.375 8.25h17.25a1.125 1.125 0 0 1 1.125 1.125v6.75a1.125 1.125 0 0 1-1.125 1.125H3.375a1.125 1.125 0 0 1-1.125-1.125v-6.75a1.125 1.125 0 0 1 1.125-1.125Z" /></svg>
+                    </span>
+                    <!-- Frame 6: Monitor -->
+                    <span class="logo-frame logo-monitor">
+                        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21M15 17.25v1.007a3 3 0 0 0 .879 2.122L16.5 21M14.25 8.25h-4.5m-4.5 0H3v8.25c0 .621.504 1.125 1.125 1.125h16.5c.621 0 1.125-.504 1.125-1.125V8.25h-3.75m-4.5 0h-4.5m4.5 0V3.75c0-.621-.504-1.125-1.125-1.125h-2.25c-.621 0-1.125.504-1.125 1.125v4.5m4.5 0h-4.5" /></svg>
+                    </span>
+                    <!-- Frame 7: Mouse -->
+                    <span class="logo-frame logo-mouse">
+                        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75v6.375a3 3 0 0 0 3 3h3a3 3 0 0 0 3-3v-6.375M9 12.75A3 3 0 0 1 12 9.75h0A3 3 0 0 1 15 12.75M9 12.75v-1.5A3 3 0 0 1 12 8.25h0A3 3 0 0 1 15 11.25v1.5" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 9.75v-3.75" /></svg>
+                    </span>
+                    <!-- Frame 8: Console -->
+                    <span class="logo-frame logo-console">
+                        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h16.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5H3.75a1.5 1.5 0 0 0-1.5 1.5v13.5a1.5 1.5 0 0 0 1.5 1.5Z" /></svg>
+                    </span>
+                    <!-- Frame 9: Cloud -->
+                    <span class="logo-frame logo-cloud">
+                        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.33-2.33 3 3 0 0 1 3.75 3.75 5.25 5.25 0 0 1-10.33 2.33Z" /></svg>
+                    </span>
+                    <!-- Frame 10: GitHub -->
+                    <span class="logo-frame logo-github">
+                        <svg viewBox="0 0 24 24" fill="none"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19c-4.3 1.4 -4.3-2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6c0 -1.3 -.5 -2.4 -1.3 -3.2c.1 -.3.5 -1.5 -.1 -3.2c0 0 -1.1 -.3 -3.5 1.3c-1 -.3 -2.1 -.4 -3.2 -.4c-1.1 0 -2.2 .1 -3.2 .4C2.6 2.8 1.5 3.1 1.5 3.1c-.6 1.7 -.2 2.9 -.1 3.2c-.8 .8 -1.3 1.9 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .5 -.9 1.4 -.9 2.8v4.2" /></svg>
+                    </span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold text-light-primary mb-2">Pritish Rajpurohit</h1>
+                <!-- ADDED: Typing Container -->
+                <div class="typing-container mono text-accent">
+                    <span id="typing-text" class="typing-text"></span>
+                </div>
+                <p class="mt-0 text-lg text-light-secondary max-w-2xl mx-auto"> <!-- Adjusted margin-top -->
+                    A passionate and results-driven developer with expertise in building robust applications, managing cloud infrastructure, and leveraging AI to create intelligent solutions.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#experience" class="btn btn-secondary">View My Work</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Experience -->
+        <section id="experience" class="reveal">
+            <h2 class="text-4xl md:text-5xl font-bold text-light-primary mb-16 text-center">Professional Experience</h2>
+            <div class="timeline-container">
+                
+                <!-- Job 1 (CURRENT) -->
+                <div class="timeline-item timeline-item-current reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <p class="timeline-date">July 2025 - Present</p>
+                        <h3 class="timeline-title">Senior Application Engineer</h3>
+                        <h4 class="timeline-company">Bajaj General Insurance Limited, Pune</h4>
+                        <ul class="timeline-desc">
+                            <li>Led development and maintenance across multiple Angular projects.</li>
+                            <li>Managed the full life cycle of the Angular Deployment Pipeline.</li>
+                            <li>Resolved critical backend production issues (AWS, Docker, PLSQL, PostgreSQL).</li>
+                            <li>Implemented security best practices using STS and managed version control with Git.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <p class="timeline-date">July 2024 - July 2025</p>
+                        <h3 class="timeline-title">Application Engineer</h3>
+                        <h4 class="timeline-company">Bajaj General Insurance Limited, Pune</h4>
+                        <ul class="timeline-desc">
+                            <li>Resolved production issues for key applications by diagnosing full-stack failures.</li>
+                            <li>Gained practical experience operating on the AWS Console.</li>
+                            <li>Contributed to the development of AEM Frontend Projects.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <p class="timeline-date">Feb 2024 - June 2024</p>
+                        <h3 class="timeline-title">Internship Trainee</h3>
+                        <h4 class="timeline-company">Tata Motors Limited, Pimpri</h4>
+                        <ul class="timeline-desc">
+                            <li>Contributed to live production projects using Django (Python) and React.</li>
+                            <li>Executed database optimization strategies to improve query speeds.</li>
+                            <li>Performed comprehensive QA testing and debugging.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 3: Skills -->
+        <section id="skills" class="reveal">
+            <h2 class="text-4xl md:text-5xl font-bold text-light-primary mb-16 text-center">Technical Skills</h2>
+            <div class="skills-container reveal">
+                <!-- Skill Tabs -->
+                <div class="skills-tabs" role="tablist" aria-label="Technical Skills">
+                    <button id="tab-frontend" role="tab" aria-selected="true" aria-controls="panel-frontend" class="skill-tab-btn active">Front-End</button>
+                    <button id="tab-backend" role="tab" aria-selected="false" aria-controls="panel-backend" class="skill-tab-btn">Back-End & DB</button>
+                    <button id="tab-cloud" role="tab" aria-selected="false" aria-controls="panel-cloud" class="skill-tab-btn">Cloud & DevOps</button>
+                    <button id="tab-ai" role="tab" aria-selected="false" aria-controls="panel-ai" class="skill-tab-btn">AI, ML & BI</button>
+                    <button id="tab-lang" role="tab" aria-selected="false" aria-controls="panel-lang" class="skill-tab-btn">Languages</button>
+                </div>
+
+                <!-- Skill Panels -->
+                <div class="skills-panels">
+                    <!-- Frontend Panel -->
+                    <div id="panel-frontend" role="tabpanel" tabindex="0" aria-labelledby="tab-frontend" class="skill-tab-content active">
+                        <div class="skills-grid">
+                            <!-- Angular -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L1 4.4l1.8 13.9L12 22l9.2-3.7L23 4.4L12 2zm0 2.5l7.1 2.2l-1.3 9.7L12 19.3l-6.8-2.9L3.9 6.7L12 4.5zM12 6.3l-4.2 8.6h2.1l2.1-4.3l2.1 4.3h2.1L12 6.3z"/></svg>
+                                </div>
+                                <p class="skill-card-name">Angular</p>
+                            </div>
+                            <!-- React -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(60 12 12)" stroke="currentColor" stroke-width="1.5" fill="none"/><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(120 12 12)" stroke="currentColor" stroke-width="1.5" fill="none"/><ellipse cx="12" cy="12" rx="11" ry="4.2" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                                </div>
+                                <p class="skill-card-name">React</p>
+                            </div>
+                            <!-- HTML & CSS -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5 0-4.5 16.5" /></svg>
+                                </div>
+                                <p class="skill-card-name">HTML & CSS</p>
+                            </div>
+                            <!-- JavaScript (UPDATED) -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                        <text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" font-weight="bold">JS</text>
+                                    </svg>
+                                </div>
+                                <p class="skill-card-name">JavaScript</p>
+                            </div>
+                            <!-- TypeScript (UPDATED) -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                        <text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" font-weight="bold">TS</text>
+                                    </svg>
+                                </div>
+                                <p class="skill-card-name">TypeScript</p>
+                            </div>
+                            <!-- Flutter (UPDATED) -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 0L6.75 7.75L12 13L19.75 5.25L14.5 0Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14.5 24L19.75 18.75L12 11.001L6.75 16.25L14.5 24Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                                </div>
+                                <p class="skill-card-name">Flutter</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Backend/DB Panel -->
+                    <div id="panel-backend" role="tabpanel" tabindex="0" aria-labelledby="tab-backend" class="skill-tab-content">
+                        <div class="skills-grid">
+                            <!-- Laravel & PHP -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="currentColor">PHP</text></svg>
+                                </div>
+                                <p class="skill-card-name">Laravel & PHP</p>
+                            </div>
+                            <!-- Django (UPDATED) -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                   <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 0 0-.12-1.03l-2.268-9.64a3.375 3.375 0 0 0-3.285-2.602H7.923a3.375 3.375 0 0 0-3.285 2.602l-2.268 9.64a4.5 4.5 0 0 0-.12 1.03v.228m19.5 0a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3m19.5 0a3 3 0 0 0-3-3H5.25a3 3 0 0 0-3 3m16.5 0h.008v.008h-.008v-.008Z" /></svg>
+                                </div>
+                                <p class="skill-card-name">Django</p>
+                            </div>
+                            <!-- Flask (UPDATED) -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                   <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 2.25c.381.204.75.43 1.104.682l.06.046c.353.25.694.516 1.022.798l.056.048c.328.28.644.574.946.88l.048.048c.302.302.58.62.83.946l.048.056c.282.328.548.67.798 1.022l.046.06c.252.353.478.723.682 1.104M9.75 2.25c-.381.204-.75.43-1.104.682l-.06.046c-.353.25-.694.516-1.022.798l-.056.048c-.328.28-.644.574-.946.88l-.048.048c-.302.302-.58.62-.83.946l-.048.056c-.282.328-.548.67-.798 1.022l-.046.06c-.252.353-.478.723-.682 1.104M12 21V12.75A4.5 4.5 0 0 0 7.5 8.25c0-2.485 2.015-4.5 4.5-4.5s4.5 2.015 4.5 4.5A4.5 4.5 0 0 0 12 12.75V21z" /></svg>
+                                </div>
+                                <p class="skill-card-name">Flask</p>
+                            </div>
+                            <!-- PLSQL / PostgreSQL (UPDATED) -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375" /></svg>
+                                </div>
+                                <p class="skill-card-name">PLSQL / PGSQL</p>
+                            </div>
+                            <!-- Firebase (UPDATED) -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 15C12.75 14.6022 12.6713 14.2109 12.5209 13.8536C12.3705 13.4962 12.152 13.1805 11.8787 12.9287C11.6054 12.6768 11.282 12.4947 10.9283 12.3941C10.5746 12.2936 10.201 12.2774 9.83333 12.3472C9.46567 12.417 9.11667 12.5711 8.81667 12.7981C8.51667 13.0252 8.275 13.3188 8.11 13.6556C7.945 13.9923 7.86 14.364 7.86 14.7417C7.86 15.1193 7.945 15.491 8.11 15.8277C8.275 16.1645 8.51667 16.4581 8.81667 16.6852C9.11667 16.9122 9.46567 17.0663 9.83333 17.1361C10.201 17.2059 10.5746 17.1897 10.9283 17.0891C11.282 16.9886 11.6054 16.8065 11.8787 16.5546C12.152 16.3028 12.3705 15.9871 12.5209 15.6297C12.6713 15.2724 12.75 14.8811 12.75 14.5M12.75 15L18.75 18.75M3.75 12.75L9 16.5M12 21.75C12.4142 21.75 12.8236 21.6689 13.2056 21.5113C13.5877 21.3537 13.9358 21.1232 14.2322 20.8305C14.5287 20.5378 14.7678 20.1878 14.9393 19.8009C15.1108 19.4139 15.212 18.9977 15.2393 18.573C15.2667 18.1482 15.22 17.721 15.0999 17.3153C14.9799 16.9096 14.7889 16.5338 14.5359 16.2089C14.2829 15.884 13.973 15.6163 13.6214 15.4184C13.2698 15.2206 12.8828 15.0959 12.4807 15.0507C12.0786 15.0055 11.6723 14.9902 11.274 15.0055C10.8757 15.0208 10.4828 15.1065 10.111 15.259C9.7392 15.4114 9.395 15.6284 9.09167 15.9017M15.75 8.25C15.75 7.83579 15.6689 7.42642 15.5113 7.04438C15.3537 6.66235 15.1232 6.31422 14.8305 6.01777C14.5378 5.72132 14.1878 5.48215 13.8009 5.31067C13.4139 5.13919 12.9977 5.03805 12.573 5.01072C12.1482 4.98339 11.721 5.03011 11.3153 5.15014C10.9096 5.27018 10.5338 5.46115 10.2089 5.7141C9.884 5.96705 9.61633 6.27699 9.41843 6.62859C9.22053 6.98019 9.0959 7.36721 9.05068 7.76932C9.00547 8.17144 8.99015 8.57768 9.00547 8.976C9.02079 9.37433 9.10647 9.76722 9.259 10.139C9.41152 10.5108 9.62854 10.855 9.90186 11.1583" /></svg>
+                                </div>
+                                <p class="skill-card-name">Firebase</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Cloud/DevOps Panel -->
+                    <div id="panel-cloud" role="tabpanel" tabindex="0" aria-labelledby="tab-cloud" class="skill-tab-content">
+                        <div class="skills-grid">
+                            <!-- AWS -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.33-2.33 3 3 0 0 1 3.75 3.75 5.25 5.25 0 0 1-10.33 2.33Z" /></svg>
+                                </div>
+                                <p class="skill-card-name">AWS</p>
+                            </div>
+                            <!-- Google Cloud (GCP) -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.33-2.33 3 3 0 0 1 3.75 3.75 5.25 5.25 0 0 1-10.33 2.33Z" /></svg>
+                                </div>
+                                <p class="skill-card-name">Google Cloud</p>
+                            </div>
+                            <!-- Docker (UPDATED) -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10.5 11.25h3M12 3.75l3.75 3.75M12 3.75L8.25 7.5M21 7.5H3" /></svg>
+                                </div>
+                                <p class="skill-card-name">Docker</p>
+                            </div>
+                            <!-- Git & Github -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12c0 4.4 2.9 8.2 6.9 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1-1.4-1-1.4-.8-.6.1-.5.1-.5.9.1 1.4 1 1.4 1 .8 1.4 2.1 1 2.7.7.1-.6.3-.9.5-1.1-2.1-.2-4.2-1-4.2-4.6 0-1 .4-1.8.9-2.5-.1-.2-.4-1.2.1-2.4 0 0 .8-.2 2.6 1 .7-.2 1.5-.3 2.3-.3s1.6.1 2.3.3c1.8-1.2 2.6-1 2.6-1 .5 1.2.2 2.2.1 2.4.5.6.9 1.4.9 2.5 0 3.6-2.1 4.4-4.2 4.6.3.3.6.8.6 1.5v2.2c0 .3.2.6.7.5C19.1 20.2 22 16.4 22 12C22 6.5 17.5 2 12 2z"/></svg>
+                                </div>
+                                <p class="skill-card-name">Git & Github</p>
+                            </div>
+                            <!-- CI/CD Pipeline (UPDATED) -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.181m0-4.991v4.99m5.01-8.182a4.5 4.5 0 0 1 6.364 0 4.5 4.5 0 0 1 0 6.364l-3.182 3.182m-6.364 0a4.5 4.5 0 0 1 0-6.364 4.5 4.5 0 0 1 6.364 0l3.182 3.182" /></svg>
+                                </div>
+                                <p class="skill-card-name">CI/CD Pipeline</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- AI/ML/BI Panel -->
+                    <div id="panel-ai" role="tabpanel" tabindex="0" aria-labelledby="tab-ai" class="skill-tab-content">
+                        <div class="skills-grid">
+                            <!-- AI / ML (UPDATED) -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 21v-1.5M12 3v1.5m0 15v1.5m3.75-18v1.5m0 15v1.5M12 12a6.75 6.75 0 1 0 0-13.5 6.75 6.75 0 0 0 0 13.5Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" /></svg>
+                                </div>
+                                <p class="skill-card-name">AI / ML</p>
+                            </div>
+                            <!-- Google BI -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25A1.125 1.125 0 0 1 9.75 19.875V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" /></svg>
+                                </div>
+                                <p class="skill-card-name">Google BI</p>
+                            </div>
+                            <!-- CCAI Insights (UPDATED) -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-2.25 3h5.25M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" /></svg>
+                                </div>
+                                <p class="skill-card-name">CCAI Insights</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Languages Panel -->
+                    <div id="panel-lang" role="tabpanel" tabindex="0" aria-labelledby="tab-lang" class="skill-tab-content">
+                        <div class="skills-grid">
+                            <!-- Python (UPDATED) -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.04 8.78c-1.2 0-2.17-.98-2.17-2.18 0-1.2.98-2.17 2.17-2.17 1.2 0 2.17.98 2.17 2.17 0 1.21-.98 2.18-2.17 2.18Z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.04 8.78V12c0 2.1-1.7 3.8-3.8 3.8H8.96c-2.1 0-3.8-1.7-3.8-3.8 0-2.1 1.7-3.8 3.8-3.8h1.2v4.54"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.96 15.22c1.2 0 2.17.98 2.17 2.17 0 1.2-.98 2.17-2.17 2.17-1.2 0-2.17-.98-2.17-2.17 0-1.2.98-2.17 2.17 2.17Z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.96 15.22V12c0-2.1 1.7-3.8 3.8-3.8h2.28c2.1 0 3.8 1.7 3.8 3.8 0 2.1-1.7 3.8-3.8 3.8h-1.2V8.26"/>
+                                    </svg>
+                                </div>
+                                <p class="skill-card-name">Python</p>
+                            </div>
+                            <!-- JavaScript (UPDATED) -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                        <text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" font-weight="bold">JS</text>
+                                    </svg>
+                                </div>
+                                <p class="skill-card-name">JavaScript</p>
+                            </div>
+                            <!-- TypeScript (UPDATED) -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                        <text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" font-weight="bold">TS</text>
+                                    </svg>
+                                </div>
+                                <p class="skill-card-name">TypeScript</p>
+                            </div>
+                            <!-- SQL (UPDATED) -->
+                            <div class="skill-card">
+                                <div class="skill-card-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375" /></svg>
+                                </div>
+                                <p class="skill-card-name">SQL</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 4: Certifications -->
+        <section id="certifications" class="reveal">
+            <h2 class="text-4xl md:text-5xl font-bold text-light-primary mb-16 text-center">Certifications</h2>
+             <div class="max-w-3xl w-full space-y-6">
+                
+                <div class="cert-card reveal">
+                    <div class="cert-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-light-primary">Google Business Intelligence Certificate</h3>
+                        <p class="text-light-secondary">Coursera</p>
+                    </div>
+                </div>
+                
+                <div class="cert-card reveal">
+                    <div class="cert-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H7a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-light-primary">Implement Load Balancing on Compute Engine</h3>
+                        <p class="text-light-secondary">Google Cloud</p>
+                    </div>
+                </div>
+
+                <div class="cert-card reveal">
+                    <div class="cert-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1V9a1 1 0 011-1h2a1 1 0 011 1v10a1 1 0 001 1m-6 0h6" /></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-light-primary">Google Cloud Computing Foundations</h3>
+                        <p class="text-light-secondary">Google Cloud</p>
+                    </div>
+                </div>
+                
+                <div class="cert-card reveal">
+                    <div class="cert-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-light-primary">Generative AI Fundamentals</h3>
+                        <p class="text-light-secondary">Google Cloud</p>
+                    </div>
+                </div>
+
+                 <div class="cert-card reveal">
+                    <div class="cert-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" /></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-light-primary">CCAI Insights</h3>
+                        <p class="text-light-secondary">Google Cloud</p>
+                    </div>
+                </div>
+
+                <div class="cert-card reveal">
+                    <div class="cert-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-light-primary">SQL (Advanced)</h3>
+                        <p class="text-light-secondary">HackerRank</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 5: Education -->
+        <section id="education" class="reveal">
+            <h2 class="text-4xl md:text-5xl font-bold text-light-primary mb-16 text-center">Education</h2>
+            <div class="education-spotlight max-w-2xl w-full reveal">
+                <div class="education-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path d="M12 14l9-5-9-5-9 5 9 5zm0 0v6" /></svg>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-light-primary">Bachelor of Engineering in Information Technology</h3>
+                    <p class="text-xl text-accent font-semibold mt-2">International Institute of Information Technology, Pune</p>
+                    <p class="text-md text-light-secondary font-medium mt-1">April 2020 - June 2024</p>
+                    <p class="mt-4 text-light-secondary">
+                        Gained foundational and advanced knowledge in Data Structures, Algorithms, OOP, DBMS, OS, Cloud Computing, and AI/ML.
+                    </img src="httpsStorage-Placehold.co/600x400/0A0A1A/9F70FD?text=Education+Icon" alt="Education Icon">
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Contact -->
+        <section id="contact" class="reveal">
+            <h2 class="text-4xl md:text-5xl font-bold text-light-primary mb-8 text-center">Get In Touch</h2>
+            <p class="text-lg text-center text-light-secondary max-w-2xl mb-12 mx-auto"> <!-- Added mx-auto -->
+                I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision.
+            </p>
+            <div class="flex flex-col md:flex-row gap-8">
+                 <a href="mailto:pritish.rajpurohit@outlook.com" class="content-card p-6 flex items-center space-x-4 w-80 reveal">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    <div>
+                        <h3 class="text-xl font-bold text-light-primary">Email</h3>
+                        <p class="text-light-secondary">pritish.rajpurohit@outlook.com</p>
+                    </div>
+                </a>
+                <div class="content-card p-6 flex items-center space-x-4 w-80 reveal">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                    <div>
+                        <h3 class="text-xl font-bold text-light-primary">Phone</h3>
+                        <p class="text-light-secondary">(+91) 8605988403</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="main-footer" class="text-center py-12 border-t border-gray-700">
+        <div class="container mx-auto px-6 md:px-12"> <!-- Removed md:pl-32 from here -->
+            <p class="text-light-secondary">&copy; 2025 Pritish Rajpurohit. All Rights Reserved.</p>
+            <p class="text-gray-500 text-sm mt-2">Crafted with futuristic design and code.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is ready
+
+            // --- ADDED: Typing Animation ---
+            const roles = ["Full Stack Developer", "Application Engineer", "Cloud/AI Specialist"];
+            let roleIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            const typingTextEl = document.getElementById('typing-text');
+
+            function type() {
+                // Check if element exists before proceeding
+                if (!typingTextEl) return;
+
+                const currentRole = roles[roleIndex];
+                let displayText = '';
+
+                if (isDeleting) {
+                    displayText = currentRole.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    displayText = currentRole.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                typingTextEl.textContent = displayText;
+                typingTextEl.classList.add('typing-text'); // Keep cursor visible
+
+                let typeSpeed = isDeleting ? 75 : 150;
+
+                if (!isDeleting && charIndex === currentRole.length) {
+                    typeSpeed = 2000; // Pause at end
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    roleIndex = (roleIndex + 1) % roles.length;
+                    typeSpeed = 500; // Pause before new word
+                }
+
+                setTimeout(type, typeSpeed);
+            }
+            // Start typing animation only if the element exists
+            if (typingTextEl) {
+                type();
+            }
+            // --- End Typing Animation ---
+
+
+            // --- NAVIGATION & SCROLLSPY LOGIC ---
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a[data-section]'); // Combined desktop and mobile
+
+            // Intersection Observer for scrollspy & animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.3 // Trigger when 30% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    const targetLinks = document.querySelectorAll(`nav a[data-section="${id}"]`);
+
+                    if (entry.isIntersecting) {
+                        // Activate Nav Link
+                        if (id) { // Ensure it's a section with an ID
+                            navLinks.forEach(link => link.classList.remove('active'));
+                            targetLinks.forEach(link => link.classList.add('active'));
+                        }
+
+                        // Trigger scroll animation
+                        entry.target.classList.add('reveal-visible');
+                    }
+                    // No 'else' block needed if we only want to add the class
+                });
+            }, observerOptions);
+
+            // Observe all sections and add reveal class for animation
+            sections.forEach(section => {
+                // IMPORTANT FIX: Don't add reveal to the home section initially
+                if (section.id !== 'home') {
+                    section.classList.add('reveal');
+                } else {
+                    // Make sure home is visible immediately
+                     section.classList.add('reveal-visible');
+                }
+                observer.observe(section);
+            });
+
+            // Observe other elements that need revealing
+            document.querySelectorAll('.timeline-item, .skills-container, .cert-card, .education-spotlight, .content-card').forEach(el => {
+                el.classList.add('reveal');
+                observer.observe(el);
+            });
+
+
+            // --- SKILLS TAB LOGIC ---
+            const tabsContainer = document.querySelector('.skills-tabs');
+            const tabButtons = document.querySelectorAll('.skill-tab-btn');
+            const tabPanels = document.querySelectorAll('.skill-tab-content');
+
+            if (tabsContainer) {
+                tabsContainer.addEventListener('click', (e) => {
+                    const clickedTab = e.target.closest('button');
+                    
+                    if (!clickedTab) return;
+                    
+                    // Deactivate all
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-selected', 'false');
+                    });
+                    tabPanels.forEach(panel => panel.classList.remove('active'));
+
+                    // Activate clicked
+                    clickedTab.classList.add('active');
+                    clickedTab.setAttribute('aria-selected', 'true');
+                    const targetPanelId = clickedTab.getAttribute('aria-controls');
+                    const targetPanel = document.getElementById(targetPanelId);
+                    
+                    if (targetPanel) {
+                        targetPanel.classList.add('active');
+                        // Optional: Re-trigger animations if needed when tab changes
+                        targetPanel.querySelectorAll('.reveal').forEach(el => {
+                             // Make sure elements become visible when tab is switched
+                             el.classList.remove('reveal-visible'); // Reset
+                             observer.unobserve(el); // Stop observing temporarily
+                             observer.observe(el);   // Re-observe to trigger animation
+                        });
+                    }
+                });
+            }
+        }); // End DOMContentLoaded
+    </script>
+
+</body>
+</html>
+
